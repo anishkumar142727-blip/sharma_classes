@@ -119,6 +119,30 @@
       .hero-grid {
         display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;
       }
+      .brand-showcase {
+        display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; padding: 18px 18px 14px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,255,255,0.88); box-shadow: 0 12px 24px rgba(11,31,64,0.04);
+      }
+      .primary-brand-banner {
+        display: flex; align-items: center; gap: 16px; min-width: 0;
+      }
+      .brand-mark {
+        width: 66px; height: 66px; border-radius: 20px; display: grid; place-items: center; font-weight: 900; font-size: 1.35rem; color: white; background: linear-gradient(135deg, var(--navy), var(--blue)); box-shadow: 0 16px 28px rgba(26,95,193,0.22);
+      }
+      .brand-stack {
+        min-width: 0;
+      }
+      .brand-kicker {
+        display: inline-block; margin-bottom: 6px; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange);
+      }
+      .brand-stack h2 {
+        margin: 0; font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1; letter-spacing: -0.06em; color: var(--navy);
+      }
+      .brand-stack p {
+        margin: 6px 0 0; color: var(--muted); font-weight: 700;
+      }
+      .note-cta {
+        display: inline-flex; align-items: center; justify-content: center; min-width: 180px; padding: 16px 18px; border-radius: 18px; font-weight: 800; background: linear-gradient(135deg, var(--navy), #132d5c); color: white; box-shadow: 0 12px 24px rgba(11,31,64,0.12);
+      }
       .eyebrow {
         display: inline-flex; padding: 8px 12px; border-radius: 999px; font-size: 12px; color: var(--blue); background: var(--blue-soft); font-weight: 700; margin-bottom: 18px;
       }
@@ -497,6 +521,17 @@
       <section class="hero" id="home">
         <div class="wrap hero-grid">
           <div>
+            <div class="brand-showcase">
+              <div class="primary-brand-banner">
+                <div class="brand-mark">SC</div>
+                <div class="brand-stack">
+                  <span class="brand-kicker">Learning that clicks</span>
+                  <h2>Sharma Classes</h2>
+                  <p>Founder: Anish Sharma</p>
+                </div>
+              </div>
+              <a class="note-cta" href="#notes">Student Notes</a>
+            </div>
             <div class="eyebrow">Your goals • Our guidance • Your future</div>
             <h1>Learn Today.<br />Lead <span>Tomorrow.</span></h1>
             <p>Sharma Classes is built for students who want clearer concepts, stronger fundamentals, and more confidence in class, exams, and everyday learning.</p>
