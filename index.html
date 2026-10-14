@@ -370,6 +370,42 @@
       .notes-panel {
         background: white; border: 1px solid var(--line); border-radius: 22px; padding: 18px; box-shadow: 0 10px 26px rgba(11,31,64,0.05);
       }
+      .notes-upload {
+        margin-bottom: 18px; padding: 18px; border: 1px dashed rgba(26,95,193,0.35); border-radius: 18px; background: linear-gradient(135deg, rgba(26,95,193,0.04), rgba(255,122,26,0.03));
+      }
+      .notes-upload-head {
+        display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px;
+      }
+      .notes-upload-head h4 { margin: 0; color: var(--navy); }
+      .notes-upload-grid {
+        display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px;
+      }
+      .notes-upload form {
+        display: grid; gap: 12px;
+      }
+      .notes-upload .full { grid-column: 1 / -1; }
+      .notes-upload input, .notes-upload select {
+        width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font: inherit; color: var(--ink);
+      }
+      .uploaded-note-list {
+        display: grid; gap: 10px; margin-top: 14px;
+      }
+      .uploaded-note-item {
+        display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #f8fbff;
+      }
+      .uploaded-note-meta {
+        display: flex; flex-direction: column; gap: 4px; min-width: 0;
+      }
+      .uploaded-note-title {
+        color: var(--navy); font-weight: 800; word-break: break-word;
+      }
+      .uploaded-note-sub {
+        color: var(--muted); font-size: 0.8rem;
+      }
+      .status.ready { background: rgba(27,156,103,0.12); color: var(--success); }
+      .notes-upload-status {
+        min-height: 18px; font-size: 0.85rem; font-weight: 700; color: var(--success);
+      }
       .notes-header {
         display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px;
       }
@@ -857,10 +893,51 @@
                   <h3>Class Notes</h3>
                   <button class="btn light" type="button" id="notesLogout">Logout</button>
                 </div>
+
+                <div class="notes-upload">
+                  <div class="notes-upload-head">
+                    <h4>Upload notes</h4>
+                    <span class="status ready">Live</span>
+                  </div>
+                  <form id="notesUploadForm">
+                    <div class="notes-upload-grid">
+                      <div>
+                        <label for="uploadClass">Class</label>
+                        <select id="uploadClass">
+                          <option>Class 7</option>
+                          <option>Class 8</option>
+                          <option>Class 9</option>
+                          <option selected>Class 10</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label for="uploadSubject">Subject</label>
+                        <select id="uploadSubject">
+                          <option selected>Science</option>
+                          <option>Maths</option>
+                        </select>
+                      </div>
+                      <div class="full">
+                        <label for="uploadTitle">Chapter / Topic</label>
+                        <input id="uploadTitle" type="text" placeholder="e.g. Light Reflection and Refraction" required />
+                      </div>
+                      <div class="full">
+                        <label for="uploadFile">Select PDF or note file</label>
+                        <input id="uploadFile" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
+                      </div>
+                    </div>
+                    <button class="btn" type="submit">Upload Note</button>
+                    <div class="notes-upload-status" id="notesUploadStatus"></div>
+                  </form>
+                </div>
+
                 <div class="notes-search">
                   <span aria-hidden="true">🔎</span>
                   <input id="notesSearch" type="search" placeholder="Search chapter or class..." aria-label="Search notes" />
                 </div>
+
+                <div class="uploaded-note-list" id="uploadedNotesList"></div>
+
                 <div class="notes-grid">
                   <div class="notes-accordion" style="grid-column: 1 / -1;">
                     <details open>
@@ -1181,10 +1258,49 @@
       const notesLoginForm = document.getElementById('notesLoginForm');
       const notesError = document.getElementById('notesError');
       const notesSearch = document.getElementById('notesSearch');
+      const notesUploadForm = document.getElementById('notesUploadForm');
+      const notesUploadStatus = document.getElementById('notesUploadStatus');
+      const uploadedNotesList = document.getElementById('uploadedNotesList');
+
+      function getStoredNotes() {
+        try {
+          return JSON.parse(localStorage.getItem('sharmaClassesNotes') || '[]');
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function saveStoredNotes(notes) {
+        localStorage.setItem('sharmaClassesNotes', JSON.stringify(notes));
+      }
+
+      function renderUploadedNotes() {
+        const notes = getStoredNotes();
+        if (!uploadedNotesList) return;
+
+        if (!notes.length) {
+          uploadedNotesList.innerHTML = '<div class="uploaded-note-item"><div class="uploaded-note-meta"><span class="uploaded-note-title">No uploaded notes yet</span><span class="uploaded-note-sub">Your uploaded chapters will appear here.</span></div><span class="status coming">Waiting</span></div>';
+          return;
+        }
+
+        uploadedNotesList.innerHTML = notes.map((note) => {
+          const fileLabel = note.fileName ? note.fileName : 'No file uploaded';
+          return `
+            <div class="uploaded-note-item">
+              <div class="uploaded-note-meta">
+                <span class="uploaded-note-title">${note.title}</span>
+                <span class="uploaded-note-sub">${note.className} • ${note.subject} • ${fileLabel}</span>
+              </div>
+              <span class="status ready">Added</span>
+            </div>
+          `;
+        }).join('');
+      }
 
       function showNotesPanel() {
         notesLoginBox.classList.add('hidden');
         notesPanel.classList.remove('hidden');
+        renderUploadedNotes();
       }
 
       function hideNotesPanel() {
@@ -1205,7 +1321,32 @@
         }
       });
 
+      notesUploadForm?.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const title = document.getElementById('uploadTitle').value.trim();
+        const className = document.getElementById('uploadClass').value;
+        const subject = document.getElementById('uploadSubject').value;
+        const fileInput = document.getElementById('uploadFile');
+        const fileName = fileInput && fileInput.files && fileInput.files[0] ? fileInput.files[0].name : 'No file selected';
+
+        if (!title) {
+          notesUploadStatus.textContent = 'Please enter a chapter or topic name.';
+          notesUploadStatus.style.color = '#c03737';
+          return;
+        }
+
+        const notes = getStoredNotes();
+        notes.unshift({ title, className, subject, fileName, addedAt: new Date().toISOString() });
+        saveStoredNotes(notes);
+        renderUploadedNotes();
+        notesUploadStatus.textContent = 'Note uploaded successfully.';
+        notesUploadStatus.style.color = '#1b9c67';
+        notesUploadForm.reset();
+      });
+
       document.getElementById('notesLogout').addEventListener('click', hideNotesPanel);
+
+      renderUploadedNotes();
 
       function filterNotes() {
         const q = (notesSearch?.value || '').toLowerCase().trim();
