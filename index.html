@@ -1,0 +1,1138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sharma Classes by Anish Sharma — coaching, mentoring, and computer skills for school students and learners." />
+    <title>Sharma Classes | Learn. Build. Succeed.</title>
+    <style>
+      :root {
+        --navy: #0b1f40;
+        --navy-2: #102d5b;
+        --blue: #1a5fc1;
+        --blue-soft: #eaf3ff;
+        --orange: #ff7a1a;
+        --orange-soft: #fff0e7;
+        --ink: #1a2433;
+        --muted: #5e697d;
+        --line: #e5ebf5;
+        --bg: #f5f8fc;
+        --panel: #ffffff;
+        --success: #1b9c67;
+        --shadow: 0 14px 34px rgba(11, 31, 64, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #f8fafe 0%, #ffffff 100%);
+        line-height: 1.65;
+      }
+      img { max-width: 100%; display: block; }
+      a { text-decoration: none; color: inherit; }
+      p { margin-top: 0; }
+      .wrap { width: min(1160px, 92%); margin: 0 auto; }
+      .topbar {
+        background: var(--navy);
+        color: rgba(255,255,255,0.9);
+        font-size: 13px;
+        padding: 10px 0;
+      }
+      .topbar .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .nav {
+        background: rgba(255,255,255,0.96);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .navin {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--navy);
+        font-weight: 900;
+        letter-spacing: 0.04em;
+      }
+      .brand small { display: block; font-size: 10px; letter-spacing: 0.06em; color: var(--muted); margin-top: 4px; }
+      .logo {
+        width: 46px; height: 46px; border-radius: 14px;
+        display: grid; place-items: center;
+        background: linear-gradient(135deg, var(--blue), var(--navy));
+        color: white; box-shadow: 0 12px 24px rgba(26,95,193,0.25);
+      }
+      .links {
+        display: flex; align-items: center; gap: 24px;
+        font-size: 14px; font-weight: 700; color: var(--navy);
+      }
+      .links a { position: relative; }
+      .links a::after {
+        content: ""; position: absolute; left: 0; bottom: -7px; width: 100%; height: 2px;
+        background: var(--orange); transform: scaleX(0); transform-origin: left; transition: 0.2s ease;
+      }
+      .links a:hover::after { transform: scaleX(1); }
+      .links.open {
+        display: flex; position: absolute; top: 76px; left: 0; right: 0; margin: 0 4%; padding: 18px 16px; background: rgba(255,255,255,0.98); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 20px 34px rgba(11,31,64,0.1); flex-direction: column; align-items: flex-start; gap: 12px;
+      }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        background: var(--orange); color: white; border: 0;
+        border-radius: 12px; padding: 14px 20px; font-weight: 800; cursor: pointer;
+        transition: 0.2s ease; box-shadow: 0 12px 24px rgba(255,122,26,0.2);
+      }
+      .btn:hover { transform: translateY(-2px); }
+      .btn.blue { background: var(--navy); box-shadow: none; }
+      .btn.light { background: white; color: var(--navy); border: 1px solid var(--line); box-shadow: none; }
+      .menu { display: none; border: 1px solid var(--line); background: white; width: 42px; height: 42px; border-radius: 10px; font-size: 20px; }
+
+      section { padding: 80px 0; }
+      .section-head { margin-bottom: 26px; }
+      .kicker {
+        display: inline-block; margin-bottom: 10px; padding: 8px 12px; border-radius: 999px;
+        background: var(--blue-soft); color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      }
+      .section-head h2 {
+        margin: 0 0 8px; font-size: clamp(2rem, 3vw, 3rem); line-height: 1.15; letter-spacing: -0.04em; color: var(--navy);
+      }
+      .section-head p { margin: 0; color: var(--muted); font-size: 1.04rem; }
+
+      .hero {
+        padding: 68px 0 34px; background: radial-gradient(circle at top left, rgba(26,95,193,0.08), transparent 30%), linear-gradient(180deg, #f9fbff 0%, #f1f7ff 100%);
+      }
+      .hero-grid {
+        display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;
+      }
+      .eyebrow {
+        display: inline-flex; padding: 8px 12px; border-radius: 999px; font-size: 12px; color: var(--blue); background: var(--blue-soft); font-weight: 700; margin-bottom: 18px;
+      }
+      .hero h1 { margin: 0 0 18px; font-size: clamp(3rem, 5vw, 5rem); line-height: 0.96; letter-spacing: -0.06em; color: var(--navy); }
+      .hero h1 span { color: var(--orange); }
+      .hero p { max-width: 590px; font-size: 1.08rem; color: var(--muted); }
+      .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+      .hero-note {
+        margin-top: 18px; color: var(--navy); font-size: 0.96rem; font-weight: 600;
+      }
+      .hero-badges {
+        display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;
+      }
+      .hero-badges span {
+        display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.7); border: 1px solid var(--line); color: var(--navy); border-radius: 999px; padding: 8px 12px; font-size: 0.8rem; font-weight: 700;
+      }
+      .hero-visual {
+        position: relative; min-height: 470px; display: flex; align-items: center; justify-content: center; 
+      }
+      .hero-visual img {
+        width: min(100%, 500px); height: 470px; object-fit: cover; border-radius: 28px; border: 8px solid rgba(255,255,255,0.9); box-shadow: var(--shadow);
+      }
+      .float-card {
+        position: absolute; background: rgba(255,255,255,0.93); border: 1px solid var(--line); border-radius: 15px; padding: 14px 16px; font-weight: 800; color: var(--navy); box-shadow: 0 16px 40px rgba(11,31,64,0.1);
+      }
+      .float-card small { display: block; font-weight: 600; color: var(--muted); margin-top: 4px; }
+      .float-card.one { right: 10px; top: 20px; }
+      .float-card.two { left: 10px; bottom: 18px; }
+
+      .stats { padding: 0 0 26px; }
+      .statgrid {
+        display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px;
+      }
+      .stat {
+        background: white; border: 1px solid var(--line); border-radius: 18px; padding: 28px 20px; text-align: center; box-shadow: 0 8px 20px rgba(11,31,64,0.04);
+      }
+      .stat strong { display: block; color: var(--navy); font-size: 2rem; letter-spacing: -0.06em; }
+      .stat span { color: var(--muted); font-size: 0.93rem; }
+
+      .promise-strip {
+        background: linear-gradient(135deg, rgba(26,95,193,0.08), rgba(255,122,26,0.10)); border: 1px solid var(--line); border-radius: 22px; padding: 18px 20px; margin: 0 auto 30px; width: min(1160px, 92%); display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
+      }
+      .promise-strip span {
+        display: inline-flex; align-items: center; gap: 8px; color: var(--navy); background: rgba(255,255,255,0.7); border: 1px solid rgba(26,95,193,0.08); border-radius: 999px; padding: 9px 12px; font-size: 0.8rem; font-weight: 800;
+      }
+      .outcome-grid {
+        display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; margin-top: 22px;
+      }
+      .outcome-card {
+        background: white; border: 1px solid var(--line); border-radius: 18px; padding: 24px 18px; text-align: center; box-shadow: 0 8px 18px rgba(11,31,64,0.04);
+      }
+      .outcome-card .num {
+        display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, var(--blue-soft), var(--orange-soft)); color: var(--navy); font-weight: 900; margin-bottom: 12px;
+      }
+      .outcome-card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.08rem; }
+      .outcome-card p { margin: 0; color: var(--muted); }
+
+      .process-grid {
+        display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 22px;
+      }
+      .process-card {
+        background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%); border: 1px solid var(--line); border-radius: 20px; padding: 24px 20px; box-shadow: 0 10px 22px rgba(11,31,64,0.04);
+      }
+      .process-card .step {
+        display: inline-flex; width: 38px; height: 38px; border-radius: 12px; background: var(--navy); color: white; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 12px;
+      }
+      .process-card h3 { margin: 0 0 8px; color: var(--navy); }
+      .process-card p { margin: 0; color: var(--muted); }
+
+      .about-grid {
+        display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; align-items: center;
+      }
+      .photo {
+        width: 100%; height: 460px; object-fit: cover; border-radius: 26px; box-shadow: var(--shadow);
+      }
+      .about-copy p { color: var(--muted); margin-bottom: 16px; }
+      .mission {
+        grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; margin-top: 22px;
+      }
+      .mini {
+        background: white; border: 1px solid var(--line); border-radius: 18px; padding: 22px 20px; box-shadow: 0 8px 20px rgba(11,31,64,0.03);
+      }
+      .mini b { color: var(--navy); font-size: 1.04rem; display: block; margin-bottom: 8px; }
+      .mini p { margin: 0; color: var(--muted); }
+
+      .trust-grid {
+        display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 20px;
+      }
+      .trust-card {
+        background: white; border: 1px solid var(--line); border-radius: 18px; padding: 24px 20px; box-shadow: 0 8px 20px rgba(11,31,64,0.04);
+      }
+      .mini-badge {
+        display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 12px; font-weight: 900; color: var(--blue); background: var(--blue-soft);
+      }
+      .trust-card h3 { margin: 18px 0 10px; color: var(--navy); }
+      .trust-card p { margin: 0; color: var(--muted); }
+
+      .feature-grid {
+        display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 20px;
+      }
+      .feature {
+        background: white; border: 1px solid var(--line); border-radius: 18px; padding: 26px 20px; box-shadow: 0 8px 20px rgba(11,31,64,0.04);
+      }
+      .ico {
+        width: 54px; height: 54px; border-radius: 16px; background: linear-gradient(135deg, var(--orange-soft), #f0f7ff); display: grid; place-items: center; font-size: 24px; margin-bottom: 18px;
+      }
+      .feature h3 { margin: 0 0 8px; color: var(--navy); }
+      .feature p { margin: 0; color: var(--muted); }
+
+      .courses { background: linear-gradient(180deg, #fff 0%, #f6f9ff 100%); }
+      .course-tools {
+        display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 24px; align-items: center;
+      }
+      .course-tools input, .course-tools select, .form input, .form select, .form textarea {
+        border: 1px solid var(--line); background: white; border-radius: 12px; padding: 14px 16px; font: inherit; color: var(--ink);
+      }
+      .course-tools input { flex: 1 1 280px; max-width: 350px; }
+      .course-tools select { width: 220px; }
+      .course-grid {
+        display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px;
+      }
+      .course {
+        background: white; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 24px rgba(11,31,64,0.04); transition: 0.2s ease;
+      }
+      .course:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(11,31,64,0.09); }
+      .course-art {
+        height: 120px; display: grid; place-items: center; font-size: 42px; color: white; background: linear-gradient(135deg, var(--navy), var(--blue));
+      }
+      .course:nth-child(4n-2) .course-art { background: linear-gradient(135deg, var(--orange), #ffaf54); }
+      .course:nth-child(4n-1) .course-art { background: linear-gradient(135deg, #1e8d9a, #58c0b4); }
+      .course:nth-child(4n) .course-art { background: linear-gradient(135deg, #1d4d8b, #3b7fda); }
+      .course-body { padding: 18px 16px 20px; }
+      .tag {
+        display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); background: #edf4ff; border-radius: 999px; padding: 6px 9px;
+      }
+      .course h3 { margin: 12px 0 8px; color: var(--navy); font-size: 1.08rem; }
+      .course p { margin: 0 0 12px; font-size: 0.92rem; color: var(--muted); min-height: 58px; }
+      .more { color: var(--blue); font-weight: 800; font-size: 0.92rem; }
+      .notice {
+        margin-top: 16px; color: var(--muted); font-size: 0.88rem; line-height: 1.5;
+      }
+
+      .founder-grid { display: grid; grid-template-columns: 1fr; }
+      .founder {
+        display: grid; grid-template-columns: 170px 1fr; gap: 22px; align-items: center;
+        background: white; border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: 0 8px 22px rgba(11,31,64,0.04);
+      }
+      .founder img {
+        width: 170px; height: 210px; object-fit: cover; border-radius: 18px;
+      }
+      .founder h3 { margin: 0; color: var(--navy); font-size: 2rem; }
+      .role { margin: 8px 0 12px; color: var(--orange); font-weight: 800; }
+      .founder p { color: var(--muted); margin-bottom: 12px; }
+      .lead-stats {
+        display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px;
+      }
+      .lead-pill {
+        display: inline-flex; align-items: center; gap: 8px; background: var(--blue-soft); color: var(--navy); padding: 8px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700;
+      }
+
+      .testimonials { background: var(--bg); }
+      .testimonial-grid {
+        display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 24px;
+      }
+      .testimonial-card {
+        background: white; border: 1px solid var(--line); border-radius: 18px; padding: 24px 20px; box-shadow: 0 8px 20px rgba(11,31,64,0.04);
+      }
+      .stars { color: #ffb020; font-size: 1.1rem; letter-spacing: 0.16em; margin-bottom: 12px; }
+      .testimonial-card p { color: var(--muted); margin-bottom: 20px; }
+      .person {
+        display: flex; align-items: center; gap: 12px; margin-top: 10px;
+      }
+      .avatar {
+        width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--blue)); color: white; display: grid; place-items: center; font-weight: 800;
+      }
+      .person strong { display: block; color: var(--navy); }
+      .person small { color: var(--muted); }
+
+      .notes-box {
+        background: linear-gradient(135deg, rgba(26,95,193,0.04), rgba(255,122,26,0.05)); border: 1px solid var(--line); border-radius: 26px; padding: 26px;
+      }
+      .notes-wrap {
+        display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 24px; align-items: start;
+      }
+      .notes-login {
+        background: white; border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 10px 26px rgba(11,31,64,0.05);
+      }
+      .notes-quick {
+        display: grid; gap: 12px; margin-bottom: 16px;
+      }
+      .notes-quick .chip {
+        display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 999px; background: var(--blue-soft); color: var(--navy); font-size: 0.78rem; font-weight: 700; width: fit-content;
+      }
+      .notes-login form {
+        display: grid; gap: 14px;
+      }
+      .row2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+      .notes-login label, .form label { display: block; font-size: 0.86rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+      .notes-login input, .form input, .form select, .form textarea {
+        width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px; font: inherit; color: var(--ink);
+      }
+      .notes-error { margin-top: 12px; color: #c03737; font-weight: 700; min-height: 22px; }
+      .notes-panel.hidden, .notes-login.hidden { display: none; }
+      .notes-panel {
+        background: white; border: 1px solid var(--line); border-radius: 22px; padding: 18px; box-shadow: 0 10px 26px rgba(11,31,64,0.05);
+      }
+      .notes-header {
+        display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px;
+      }
+      .notes-header h3 { margin: 0; color: var(--navy); }
+      .notes-grid {
+        display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px;
+      }
+      .notes-search {
+        margin-bottom: 16px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 12px; background: white; padding: 10px 12px;
+      }
+      .notes-search input {
+        border: 0; width: 100%; outline: none; font: inherit; color: var(--ink); background: transparent;
+      }
+      .notes-accordion {
+        display: grid; gap: 14px;
+      }
+      .notes-accordion details {
+        border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, #ffffff, #f8fbff); overflow: hidden;
+      }
+      .notes-accordion summary {
+        list-style: none; cursor: pointer; padding: 16px 18px; font-weight: 800; color: var(--navy); display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      }
+      .notes-accordion summary::-webkit-details-marker { display: none; }
+      .notes-accordion summary span:last-child {
+        font-size: 12px; color: var(--muted); font-weight: 700;
+      }
+      .notes-accordion details[open] summary {
+        border-bottom: 1px solid var(--line);
+        background: rgba(26,95,193,0.04);
+      }
+      .note-box {
+        padding: 0;
+      }
+      .note-box h4 { margin: 0 0 12px; color: var(--navy); }
+      .note-box h5 { margin: 0 0 10px; color: var(--blue); font-size: 0.92rem; }
+      .chapter-list { list-style: none; padding: 0 18px 18px; margin: 0; display: grid; gap: 8px; }
+      .chapter-list li {
+        display: flex; align-items: center; justify-content: space-between; gap: 8px; border-bottom: 1px dashed var(--line); padding-bottom: 8px;
+      }
+      .chapter-list li:last-child { border-bottom: none; padding-bottom: 0; }
+      .status {
+        display: inline-flex; align-items: center; justify-content: center; min-width: 84px; border-radius: 999px; font-size: 11px; font-weight: 800; padding: 4px 8px;
+      }
+      .status.ready { background: rgba(27,156,103,0.12); color: var(--success); }
+      .status.coming { background: rgba(255,122,26,0.12); color: #b96a24; }
+
+      .cta {
+        background: linear-gradient(135deg, var(--navy), #0d2e5f); color: white; padding: 54px 0;
+      }
+      .cta-in {
+        display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+      }
+      .cta h2 { margin: 0 0 8px; font-size: clamp(2rem, 2.8vw, 3rem); }
+      .cta p { margin: 0; color: rgba(255,255,255,0.85); }
+
+      .contact-grid {
+        display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 24px;
+      }
+      .contact-card {
+        background: linear-gradient(135deg, var(--navy), #123d75); color: white; border-radius: 22px; padding: 26px; box-shadow: var(--shadow);
+      }
+      .contact-card h3 { margin: 0 0 14px; font-size: 1.7rem; }
+      .contact-card p { margin: 0 0 10px; color: rgba(255,255,255,0.82); }
+      .form {
+        background: white; border: 1px solid var(--line); border-radius: 22px; padding: 24px; box-shadow: 0 8px 20px rgba(11,31,64,0.04);
+      }
+      .form form { display: grid; gap: 16px; }
+      .form textarea { min-height: 120px; resize: vertical; }
+      .form-note { color: var(--muted); font-size: 0.86rem; margin: 0; }
+
+      footer {
+        background: #0b1730; color: rgba(255,255,255,0.85); padding: 28px 0 16px;
+      }
+      .footgrid {
+        display: grid; grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr; gap: 22px; padding-bottom: 28px;
+      }
+      .footgrid h4 { margin: 0 0 12px; color: white; }
+      .footgrid a, .footgrid p { display: block; color: rgba(255,255,255,0.72); margin: 0 0 8px; }
+      .copyright {
+        border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; color: rgba(255,255,255,0.72); font-size: 0.9rem; text-align: center;
+      }
+      .whatsapp {
+        position: fixed; right: 22px; bottom: 22px; z-index: 20; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        background: #25d366; color: white; font-weight: 800; border-radius: 999px; padding: 16px 18px; box-shadow: 0 12px 28px rgba(37,211,102,0.28);
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid, .about-grid, .notes-wrap, .contact-grid { grid-template-columns: 1fr; }
+        .course-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+        .testimonial-grid { grid-template-columns: 1fr; }
+        .notes-grid { grid-template-columns: 1fr; }
+        .footgrid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      }
+      @media (max-width: 700px) {
+        .topbar .wrap { justify-content: center; }
+        .links { display: none; }
+        .menu { display: block; }
+        .navin { height: 72px; }
+        .brand { font-size: 0.95rem; }
+        .statgrid, .trust-grid, .feature-grid, .course-grid, .row2 { grid-template-columns: 1fr; }
+        .hero { padding-top: 48px; }
+        .hero-visual img { height: 360px; }
+        section { padding: 58px 0; }
+        .course-art { height: 110px; }
+        .founder { grid-template-columns: 1fr; }
+        .founder img { width: 100%; max-width: 240px; }
+        .footgrid { grid-template-columns: 1fr; }
+        .whatsapp { right: 14px; bottom: 14px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="wrap">
+        <span>☎ 8076335897 &nbsp; · &nbsp; ✉ anishsharma142727@gmail.com</span>
+        <span>Learn with purpose • Grow with confidence</span>
+      </div>
+    </div>
+
+    <header class="nav">
+      <div class="wrap navin">
+        <a class="brand" href="#home">
+          <span class="logo">
+            <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 10v17"/>
+              <path d="M16 12c-3-3-7-4-12-3v16c5-.7 9 .5 12 3"/>
+              <path d="M16 12c3-3 7-4 12-3v16c-5-.7-9 .5-12 3"/>
+            </svg>
+          </span>
+          <span>
+            SHARMA CLASSES
+            <small>Founder: Anish Sharma</small>
+          </span>
+        </a>
+
+        <nav class="links" id="navlinks">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#courses">Courses</a>
+          <a href="#why">Why Us</a>
+          <a href="#founder">Founder</a>
+          <a href="#notes">Notes</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="btn blue" href="#notes">Student Notes</a>
+        <button class="menu" aria-label="Open menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="eyebrow">Your goals • Our guidance • Your future</div>
+            <h1>Learn Today.<br />Lead <span>Tomorrow.</span></h1>
+            <p>Sharma Classes is built for students who want clearer concepts, stronger fundamentals, and more confidence in class, exams, and everyday learning.</p>
+            <div class="actions">
+              <a class="btn" href="#courses">Explore Courses →</a>
+              <a class="btn light" href="#contact">Book a Free Demo</a>
+            </div>
+            <div class="hero-badges">
+              <span>✔ Personal attention</span>
+              <span>✔ CBSE-focused learning</span>
+              <span>✔ Confidence building</span>
+            </div>
+            <div class="hero-note">✓ Personal attention &nbsp; ✓ Concept-first teaching &nbsp; ✓ Student-focused guidance</div>
+          </div>
+
+          <div class="hero-visual">
+            <img src="anish.jpeg" alt="Anish Sharma" />
+            <div class="float-card one">🎯 Focused Learning<small>Clear concepts, step by step</small></div>
+            <div class="float-card two">📘 Learn with Confidence<small>Support from day one</small></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="stats">
+        <div class="wrap statgrid">
+          <div class="stat"><strong>Student-first</strong><span>Teaching approach</span></div>
+          <div class="stat"><strong>Practical</strong><span>Learning mindset</span></div>
+          <div class="stat"><strong>Clear</strong><span>Concept building</span></div>
+          <div class="stat"><strong>Supportive</strong><span>Learning environment</span></div>
+        </div>
+      </div>
+
+      <div class="promise-strip">
+        <span>📚 School subject support</span>
+        <span>🧠 Concept clarity</span>
+        <span>📈 Steady academic growth</span>
+        <span>💻 Digital skills & future readiness</span>
+      </div>
+
+      <section class="roadmap">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">How we help</div>
+            <h2>From confusion to confidence</h2>
+            <p>Every student deserves a learning path that is simple, structured, and encouraging.</p>
+          </div>
+          <div class="outcome-grid">
+            <article class="outcome-card"><div class="num">01</div><h3>Clear Concepts</h3><p>Students understand the logic behind every lesson and solve with more confidence.</p></article>
+            <article class="outcome-card"><div class="num">02</div><h3>Consistent Practice</h3><p>Regular revision helps children improve problem-solving and class performance.</p></article>
+            <article class="outcome-card"><div class="num">03</div><h3>Motivation</h3><p>Supportive guidance keeps students encouraged, focused, and ready to progress.</p></article>
+            <article class="outcome-card"><div class="num">04</div><h3>Future Readiness</h3><p>Students gain practical digital and academic skills that support long-term growth.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">How enrollment works</div>
+            <h2>A simple and supportive learning journey</h2>
+            <p>We make the path approachable from the first call to the first confident improvement.</p>
+          </div>
+          <div class="process-grid">
+            <article class="process-card"><div class="step">1</div><h3>Discuss goals</h3><p>We understand the student’s level, strengths, and areas that need support.</p></article>
+            <article class="process-card"><div class="step">2</div><h3>Choose the path</h3><p>Parents and students decide the most suitable academic or skill-based learning approach.</p></article>
+            <article class="process-card"><div class="step">3</div><h3>Start learning</h3><p>Classes begin with clarity, consistency, and a supportive environment for steady progress.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="wrap about-grid">
+          <img class="photo" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=85" alt="Students learning in a classroom" />
+          <div class="about-copy">
+            <div class="section-head">
+              <div class="kicker">Who we are</div>
+              <h2>About Sharma Classes</h2>
+              <p>A student-focused learning space designed to build understanding, discipline, and confidence.</p>
+            </div>
+            <p>Sharma Classes was created with a simple idea: every student deserves guidance that is clear, patient, and practical. We believe strong fundamentals create confidence, and confidence creates long-term academic success.</p>
+            <p>Whether a student is struggling with basics or aiming for stronger performance, our approach focuses on explanation, revision, doubt solving, and steady growth.</p>
+            <a class="btn blue" href="#founder">Meet the Founder →</a>
+            <div class="mission">
+              <div class="mini"><b>🎯 Our Mission</b><p>Help students improve concepts, build confidence, and grow through consistent support.</p></div>
+              <div class="mini"><b>👁 Our Vision</b><p>Become a trusted learning partner known for clarity, care, and real progress.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-section">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Why families choose us</div>
+            <h2>Learning that feels personal, practical, and reliable</h2>
+            <p>Students grow best when teaching is structured, encouraging, and based on understanding rather than pressure.</p>
+          </div>
+          <div class="trust-grid">
+            <div class="trust-card">
+              <div class="mini-badge">01</div>
+              <h3>Personal Attention</h3>
+              <p>Each learner gets guidance that matches their pace, confidence level, and academic needs.</p>
+            </div>
+            <div class="trust-card">
+              <div class="mini-badge">02</div>
+              <h3>Concept Clarity</h3>
+              <p>We focus on making the idea understandable first, so students can apply it in exams and real-life problems.</p>
+            </div>
+            <div class="trust-card">
+              <div class="mini-badge">03</div>
+              <h3>Regular Guidance</h3>
+              <p>Students are supported with doubts, revision, motivation, and consistent progress through each topic.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Why learn with us?</div>
+            <h2>A better way to learn</h2>
+            <p>We help students develop strong fundamentals and a confident learning habit.</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature"><div class="ico">🧑‍🏫</div><h3>Personal Guidance</h3><p>Students receive patient explanations and support that helps them move forward without fear.</p></article>
+            <article class="feature"><div class="ico">🧠</div><h3>Concept-Based Teaching</h3><p>We teach the reason behind the topic so learning feels meaningful and long-lasting.</p></article>
+            <article class="feature"><div class="ico">✍️</div><h3>Practice & Revision</h3><p>Regular work helps students improve accuracy, retention, and confidence over time.</p></article>
+            <article class="feature"><div class="ico">💬</div><h3>Doubt-Solving</h3><p>Questions are welcomed and clarified so students stay engaged and motivated.</p></article>
+            <article class="feature"><div class="ico">📅</div><h3>Structured Sessions</h3><p>Each lesson is organized to make progress steady and easier to follow.</p></article>
+            <article class="feature"><div class="ico">🌱</div><h3>Growth Mindset</h3><p>We encourage discipline, curiosity, and self-belief that lasts beyond the classroom.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="courses" id="courses">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Explore & learn</div>
+            <h2>Our courses & classes</h2>
+            <p>Programs are designed to support school learning, practical digital skills, and long-term confidence.</p>
+          </div>
+          <div class="course-tools">
+            <input id="courseSearch" type="search" placeholder="Search courses…" aria-label="Search courses" />
+            <select id="courseCategory" aria-label="Filter course category">
+              <option value="all">All categories</option>
+              <option value="computer">Computer Skills</option>
+              <option value="school">Academic Coaching</option>
+              <option value="digital">Digital & Creative</option>
+            </select>
+          </div>
+          <div class="course-grid" id="courseGrid">
+            <article class="course" data-category="computer"><div class="course-art">💻</div><div class="course-body"><span class="tag">Computer Skills</span><h3>Basic Computer Course</h3><p>Build confidence with computers, files, internet tools, and day-to-day digital usage.</p><a class="more" href="#contact" data-course="Basic Computer Course">Enquire about course →</a></div></article>
+            <article class="course" data-category="computer"><div class="course-art">📊</div><div class="course-body"><span class="tag">Office Productivity</span><h3>MS Office & Excel</h3><p>Learn documents, spreadsheets, presentations, and productivity workflows used in daily life.</p><a class="more" href="#contact" data-course="MS Office & Excel">Enquire about course →</a></div></article>
+            <article class="course" data-category="computer"><div class="course-art">🧾</div><div class="course-body"><span class="tag">Accounting</span><h3>Tally & Accounting</h3><p>Explore practical accounting skills and business record-keeping basics.</p><a class="more" href="#contact" data-course="Tally & Accounting">Enquire about course →</a></div></article>
+            <article class="course" data-category="digital"><div class="course-art">🌐</div><div class="course-body"><span class="tag">Technology</span><h3>Web Designing</h3><p>Understand website structure, design basics, and visual layout for digital creation.</p><a class="more" href="#contact" data-course="Web Designing">Enquire about course →</a></div></article>
+            <article class="course" data-category="digital"><div class="course-art">🎨</div><div class="course-body"><span class="tag">Creative Skills</span><h3>Graphic Designing</h3><p>Develop design thinking, typography, and creative communication through digital tools.</p><a class="more" href="#contact" data-course="Graphic Designing">Enquire about course →</a></div></article>
+            <article class="course" data-category="digital"><div class="course-art">📣</div><div class="course-body"><span class="tag">Digital Skills</span><h3>Digital Marketing</h3><p>Understand online promotion, audience engagement, and practical digital strategy basics.</p><a class="more" href="#contact" data-course="Digital Marketing">Enquire about course →</a></div></article>
+            <article class="course" data-category="digital"><div class="course-art">🐍</div><div class="course-body"><span class="tag">Programming</span><h3>Python Programming</h3><p>Learn logic building, coding fundamentals, and the basics of Python in a student-friendly way.</p><a class="more" href="#contact" data-course="Python Programming">Enquire about course →</a></div></article>
+            <article class="course" data-category="school"><div class="course-art">📚</div><div class="course-body"><span class="tag">Academic Coaching</span><h3>Academic Coaching</h3><p>Structured support for school subjects, concept practice, and better class performance.</p><a class="more" href="#contact" data-course="Academic Coaching">Enquire about course →</a></div></article>
+          </div>
+          <p class="notice">Tip: This list can be updated anytime with your actual subjects, student levels, timings, fees, and board syllabus.</p>
+        </div>
+      </section>
+
+      <section class="founders" id="founder">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">A message from leadership</div>
+            <h2>Meet your guide</h2>
+            <p>Good teaching begins with care, clarity, and a genuine commitment to student growth.</p>
+          </div>
+          <div class="founder-grid">
+            <article class="founder">
+              <img src="anish.jpeg" alt="Anish Sharma, founder of Sharma Classes" />
+              <div>
+                <h3>Anish Sharma</h3>
+                <div class="role">Founder • Sharma Classes</div>
+                <p>“I am Anish Sharma, currently pursuing my B.Tech from Delhi Technological University (DTU), formerly DCE. I have mentored many students and young learners, helping them build confidence, improve their concepts, and stay motivated in their academic journey. At Sharma Classes, I aim to create a supportive environment where students can learn with clarity, grow with purpose, and move forward with confidence.”</p>
+                <div class="lead-stats">
+                  <span class="lead-pill">📘 Student mentoring</span>
+                  <span class="lead-pill">💡 Concept-focused learning</span>
+                  <span class="lead-pill">🎯 Confidence building</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Parent feedback</div>
+            <h2>What families say</h2>
+            <p>Students feel more confident when learning is structured, encouraging, and easy to understand.</p>
+          </div>
+          <div class="testimonial-grid">
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>“My son became much more confident in mathematics after attending. The teaching is clear, patient, and very supportive.”</p>
+              <div class="person"><div class="avatar">P</div><div><strong>Parent</strong><small>Class 8 student</small></div></div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>“A calm and focused learning environment. My daughter started asking questions more and understanding concepts better.”</p>
+              <div class="person"><div class="avatar">R</div><div><strong>Parent</strong><small>Class 9 student</small></div></div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>“The guidance feels personal and honest. It is not just about marks but also about discipline, confidence, and growth.”</p>
+              <div class="person"><div class="avatar">A</div><div><strong>Parent</strong><small>Class 10 student</small></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="notes-section" id="notes">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Student access</div>
+            <h2>Notes for students</h2>
+            <p>Use your assigned user ID and password to access the class notes shared for your section.</p>
+          </div>
+
+          <div class="notes-box">
+            <div class="notes-wrap">
+              <div class="notes-login" id="notesLoginBox">
+                <div class="notes-quick">
+                  <span class="chip">📘 Classes 7 to 10</span>
+                  <span class="chip">🧠 Science & Maths</span>
+                  <span class="chip">📚 CBSE chapter list</span>
+                </div>
+                <form id="notesLoginForm">
+                  <div class="row2">
+                    <div>
+                      <label for="notesUserId">User ID</label>
+                      <input id="notesUserId" type="text" placeholder="Enter your user ID" required />
+                    </div>
+                    <div>
+                      <label for="notesPassword">Password</label>
+                      <input id="notesPassword" type="password" placeholder="Enter your password" required />
+                    </div>
+                  </div>
+                  <button class="btn" type="submit">Open Notes</button>
+                </form>
+                <p class="notice">Use the login provided by your teacher for your class notes and study material.</p>
+                <p class="notes-error" id="notesError"></p>
+              </div>
+
+              <div class="notes-panel hidden" id="notesPanel">
+                <div class="notes-header">
+                  <h3>Class Notes</h3>
+                  <button class="btn light" type="button" id="notesLogout">Logout</button>
+                </div>
+                <div class="notes-search">
+                  <span aria-hidden="true">🔎</span>
+                  <input id="notesSearch" type="search" placeholder="Search chapter or class..." aria-label="Search notes" />
+                </div>
+                <div class="notes-grid">
+                  <div class="notes-accordion" style="grid-column: 1 / -1;">
+                    <details open>
+                      <summary><span>Class 7 • Science</span><span>18 chapters</span></summary>
+                      <div class="note-box">
+                        <ul class="chapter-list">
+                          <li><span>Nutrition in Plants</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Nutrition in Animals</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Fibre to Fabric</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Heat</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Acids, Bases and Salts</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Physical and Chemical Changes</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Weather, Climate and Adaptations</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Winds, Storms and Cyclones</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Soil</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Respiration in Organisms</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Transportation in Animals and Plants</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Reproduction in Plants</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Motion and Time</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Electric Current and Its Effects</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Light</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Forests: Our Lifeline</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Water: A Precious Resource</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Wastewater Story</span><span class="status coming">Coming soon</span></li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details>
+                      <summary><span>Class 7 • Maths</span><span>14 chapters</span></summary>
+                      <div class="note-box">
+                        <ul class="chapter-list">
+                          <li><span>Integers</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Fractions and Decimals</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Data Handling</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Simple Equations</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Lines and Angles</span><span class="status coming">Coming soon</span></li>
+                          <li><span>The Triangle and Its Properties</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Comparing Quantities</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Rational Numbers</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Practical Geometry</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Perimeter and Area</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Algebraic Expressions</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Exponents and Powers</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Symmetry</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Visualising Solid Shapes</span><span class="status coming">Coming soon</span></li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details>
+                      <summary><span>Class 8 • Science</span><span>16 chapters</span></summary>
+                      <div class="note-box">
+                        <ul class="chapter-list">
+                          <li><span>Crop Production and Management</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Microorganisms: Friend and Foe</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Coal and Petroleum</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Combustion and Flame</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Conservation of Plants and Animals</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Cell: Structure and Functions</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Reproduction in Animals</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Reaching the Age of Adolescence</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Force and Pressure</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Friction</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Sound</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Chemical Effects of Electric Current</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Some Natural Phenomena</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Light</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Stars and the Solar System</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Pollution of Air and Water</span><span class="status coming">Coming soon</span></li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details>
+                      <summary><span>Class 8 • Maths</span><span>14 chapters</span></summary>
+                      <div class="note-box">
+                        <ul class="chapter-list">
+                          <li><span>Rational Numbers</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Linear Equations in One Variable</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Understanding Quadrilaterals</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Data Handling</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Squares and Square Roots</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Cubes and Cube Roots</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Comparing Quantities</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Algebraic Expressions and Identities</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Mensuration</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Exponents and Powers</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Direct and Inverse Proportions</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Factorisation</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Introduction to Graphs</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Playing with Numbers</span><span class="status coming">Coming soon</span></li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details>
+                      <summary><span>Class 9 • Science</span><span>15 chapters</span></summary>
+                      <div class="note-box">
+                        <ul class="chapter-list">
+                          <li><span>Matter in Our Surroundings</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Is Matter Around Us Pure?</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Atoms and Molecules</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Structure of the Atom</span><span class="status coming">Coming soon</span></li>
+                          <li><span>The Fundamental Unit of Life</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Tissues</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Diversity in Living Organisms</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Motion</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Forces and Laws of Motion</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Gravitation</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Work and Energy</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Sound</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Why Do We Fall Ill?</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Natural Resources</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Improvement in Food Resources</span><span class="status coming">Coming soon</span></li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details>
+                      <summary><span>Class 9 • Maths</span><span>15 chapters</span></summary>
+                      <div class="note-box">
+                        <ul class="chapter-list">
+                          <li><span>Number Systems</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Polynomials</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Coordinate Geometry</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Linear Equations in Two Variables</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Introduction to Euclid’s Geometry</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Lines and Angles</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Triangles</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Quadrilaterals</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Areas of Parallelograms and Triangles</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Circles</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Constructions</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Heron’s Formula</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Surface Areas and Volumes</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Statistics</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Probability</span><span class="status coming">Coming soon</span></li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details>
+                      <summary><span>Class 10 • Science</span><span>16 chapters</span></summary>
+                      <div class="note-box">
+                        <ul class="chapter-list">
+                          <li><span>Chemical Reactions and Equations</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Acids, Bases and Salts</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Metals and Non-metals</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Carbon and Its Compounds</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Periodic Classification of Elements</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Life Processes</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Control and Coordination</span><span class="status coming">Coming soon</span></li>
+                          <li><span>How do Organisms Reproduce?</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Heredity and Evolution</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Light – Reflection and Refraction</span><span class="status coming">Coming soon</span></li>
+                          <li><span>The Human Eye and the Colourful World</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Electricity</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Magnetic Effects of Electric Current</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Sources of Energy</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Our Environment</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Sustainable Management of Natural Resources</span><span class="status coming">Coming soon</span></li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details>
+                      <summary><span>Class 10 • Maths</span><span>14 chapters</span></summary>
+                      <div class="note-box">
+                        <ul class="chapter-list">
+                          <li><span>Real Numbers</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Polynomials</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Pair of Linear Equations in Two Variables</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Quadratic Equations</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Arithmetic Progressions</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Triangles</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Coordinate Geometry</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Introduction to Trigonometry</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Some Applications of Trigonometry</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Circles</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Areas Related to Circles</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Surface Areas and Volumes</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Statistics</span><span class="status coming">Coming soon</span></li>
+                          <li><span>Probability</span><span class="status coming">Coming soon</span></li>
+                        </ul>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="cta">
+        <div class="wrap cta-in">
+          <div>
+            <h2>Ready to take the next step?</h2>
+            <p>Find the right course, ask your questions, and begin your learning journey with clarity.</p>
+          </div>
+          <a class="btn" href="#contact">Enquire Now →</a>
+        </div>
+      </div>
+
+      <section class="contact" id="contact">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Get in touch</div>
+            <h2>Let’s talk about your goals</h2>
+            <p>Share your class, subject interest, or learning goal and we’ll guide you further.</p>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>Sharma Classes</h3>
+              <p>Founder: Anish Sharma</p>
+              <p>📍 B-79/2 Satya Encalve Prem Nagar 3, near Jagriti Kidz</p>
+              <p>☎ 8076335897</p>
+              <p>✉ anishsharma142727@gmail.com</p>
+              <p>🕒 Class timings are shared based on the mode and subject being taught.</p>
+            </div>
+
+            <div class="form">
+              <form id="enquiryForm">
+                <div class="row2">
+                  <div>
+                    <label for="name">Your name *</label>
+                    <input id="name" required placeholder="Enter your name" />
+                  </div>
+                  <div>
+                    <label for="phone">Phone number *</label>
+                    <input id="phone" required type="tel" placeholder="Enter your number" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="course">Course / class of interest</label>
+                  <select id="course">
+                    <option>Not sure yet</option>
+                    <option>Basic Computer Course</option>
+                    <option>MS Office & Excel</option>
+                    <option>Tally & Accounting</option>
+                    <option>Web Designing</option>
+                    <option>Graphic Designing</option>
+                    <option>Digital Marketing</option>
+                    <option>Python Programming</option>
+                    <option>Academic Coaching</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="message">Your question</label>
+                  <textarea id="message" placeholder="Tell us what you want to learn or ask about timing, fees, or admission."></textarea>
+                </div>
+
+                <button class="btn" type="submit">Prepare Enquiry Message ↗</button>
+                <p class="form-note">This button opens your email app so you can send the enquiry directly.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footgrid">
+          <div>
+            <a class="brand" href="#home" style="color:white;">
+              <span class="logo">
+                <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 10v17"/>
+                  <path d="M16 12c-3-3-7-4-12-3v16c5-.7 9 .5 12 3"/>
+                  <path d="M16 12c3-3 7-4 12-3v16c-5-.7-9 .5-12 3"/>
+                </svg>
+              </span>
+              <span>
+                SHARMA CLASSES
+                <small style="color:#c7d8f5;">Founder: Anish Sharma</small>
+              </span>
+            </a>
+            <p>Learn with purpose. Build confidence. Move towards your goals.</p>
+          </div>
+
+          <div>
+            <h4>Explore</h4>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#courses">Courses</a>
+            <a href="#founder">Founder</a>
+          </div>
+
+          <div>
+            <h4>Popular Courses</h4>
+            <a href="#courses">Basic Computer</a>
+            <a href="#courses">MS Office & Excel</a>
+            <a href="#courses">Web Designing</a>
+            <a href="#courses">Digital Marketing</a>
+          </div>
+
+          <div>
+            <h4>Contact</h4>
+            <p>8076335897</p>
+            <p>anishsharma142727@gmail.com</p>
+            <p>B-79/2 Satya Encalve Prem Nagar 3, near Jagriti Kidz</p>
+          </div>
+        </div>
+        <div class="copyright">© <span id="year"></span> Sharma Classes. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <a class="whatsapp" href="#contact" aria-label="Contact Sharma Classes">✆ Contact Us</a>
+
+    <script>
+      const NOTES_USERS = { sharma7: 'anishbhaiya' };
+      const notesLoginBox = document.getElementById('notesLoginBox');
+      const notesPanel = document.getElementById('notesPanel');
+      const notesLoginForm = document.getElementById('notesLoginForm');
+      const notesError = document.getElementById('notesError');
+      const notesSearch = document.getElementById('notesSearch');
+
+      function showNotesPanel() {
+        notesLoginBox.classList.add('hidden');
+        notesPanel.classList.remove('hidden');
+      }
+
+      function hideNotesPanel() {
+        notesPanel.classList.add('hidden');
+        notesLoginBox.classList.remove('hidden');
+        notesLoginForm.reset();
+        notesError.textContent = '';
+      }
+
+      notesLoginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const userId = document.getElementById('notesUserId').value.trim();
+        const password = document.getElementById('notesPassword').value.trim();
+        if (NOTES_USERS[userId] && NOTES_USERS[userId] === password) {
+          showNotesPanel();
+        } else {
+          notesError.textContent = 'Incorrect User ID or Password. Please contact your teacher.';
+        }
+      });
+
+      document.getElementById('notesLogout').addEventListener('click', hideNotesPanel);
+
+      function filterNotes() {
+        const q = (notesSearch?.value || '').toLowerCase().trim();
+        document.querySelectorAll('.notes-accordion details').forEach((detail) => {
+          const text = detail.innerText.toLowerCase();
+          detail.style.display = q && !text.includes(q) ? 'none' : '';
+        });
+      }
+
+      notesSearch?.addEventListener('input', filterNotes);
+
+      const search = document.getElementById('courseSearch');
+      const category = document.getElementById('courseCategory');
+
+      function filterCourses() {
+        const q = search.value.toLowerCase();
+        document.querySelectorAll('.course').forEach((course) => {
+          const matchesText = course.innerText.toLowerCase().includes(q);
+          const matchesCategory = category.value === 'all' || course.dataset.category === category.value;
+          course.style.display = matchesText && matchesCategory ? '' : 'none';
+        });
+      }
+
+      search.addEventListener('input', filterCourses);
+      category.addEventListener('change', filterCourses);
+
+      document.querySelectorAll('[data-course]').forEach((a) => {
+        a.addEventListener('click', () => {
+          document.getElementById('course').value = a.dataset.course;
+        });
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      document.getElementById('enquiryForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const course = document.getElementById('course').value;
+        const message = document.getElementById('message').value.trim();
+        const email = 'anishsharma142727@gmail.com';
+        const subject = encodeURIComponent('Course Enquiry — Sharma Classes');
+        const body = encodeURIComponent(
+          'Name: ' + name + '\n' +
+          'Phone: ' + phone + '\n' +
+          'Course / Class: ' + course + '\n' +
+          'Message: ' + (message || 'No extra message.')
+        );
+        window.location.href = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
+      });
+    </script>
+  </body>
+</html>
