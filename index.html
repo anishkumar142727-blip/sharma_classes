@@ -351,6 +351,15 @@
       .notes-login {
         background: white; border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 10px 26px rgba(11,31,64,0.05);
       }
+      .notes-portal {
+        display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 18px; align-items: start;
+      }
+      .notes-admin, .notes-student {
+        background: #f9fbff; border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+      }
+      .notes-admin h4, .notes-student h4 {
+        margin: 0 0 12px; color: var(--navy); font-size: 1.1rem;
+      }
       .notes-quick {
         display: grid; gap: 12px; margin-bottom: 16px;
       }
@@ -900,49 +909,53 @@
                   <button class="btn light" type="button" id="notesLogout">Logout</button>
                 </div>
 
-                <div class="notes-upload">
-                  <div class="notes-upload-head">
-                    <h4>Upload notes</h4>
-                    <span class="status ready">Live</span>
-                  </div>
-                  <form id="notesUploadForm">
-                    <div class="notes-upload-grid">
-                      <div>
-                        <label for="uploadClass">Class</label>
-                        <select id="uploadClass">
-                          <option>Class 7</option>
-                          <option>Class 8</option>
-                          <option>Class 9</option>
-                          <option selected>Class 10</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label for="uploadSubject">Subject</label>
-                        <select id="uploadSubject">
-                          <option selected>Science</option>
-                          <option>Maths</option>
-                        </select>
-                      </div>
-                      <div class="full">
-                        <label for="uploadTitle">Chapter / Topic</label>
-                        <input id="uploadTitle" type="text" placeholder="e.g. Light Reflection and Refraction" required />
-                      </div>
-                      <div class="full">
-                        <label for="uploadFile">Select PDF or note file</label>
-                        <input id="uploadFile" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
-                      </div>
+                <div class="notes-portal">
+                  <div class="notes-admin">
+                    <div class="notes-upload-head">
+                      <h4>Admin Upload</h4>
+                      <span class="status ready">Live</span>
                     </div>
-                    <button class="btn" type="submit">Upload Note</button>
-                    <div class="notes-upload-status" id="notesUploadStatus"></div>
-                  </form>
-                </div>
+                    <form id="notesUploadForm">
+                      <div class="notes-upload-grid">
+                        <div>
+                          <label for="uploadClass">Class</label>
+                          <select id="uploadClass">
+                            <option>Class 7</option>
+                            <option>Class 8</option>
+                            <option>Class 9</option>
+                            <option selected>Class 10</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label for="uploadSubject">Subject</label>
+                          <select id="uploadSubject">
+                            <option selected>Science</option>
+                            <option>Maths</option>
+                          </select>
+                        </div>
+                        <div class="full">
+                          <label for="uploadTitle">Chapter / Topic</label>
+                          <input id="uploadTitle" type="text" placeholder="e.g. Light Reflection and Refraction" required />
+                        </div>
+                        <div class="full">
+                          <label for="uploadFile">Select PDF or note file</label>
+                          <input id="uploadFile" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
+                        </div>
+                      </div>
+                      <button class="btn" type="submit">Upload Note</button>
+                      <div class="notes-upload-status" id="notesUploadStatus"></div>
+                    </form>
+                  </div>
 
-                <div class="notes-search">
-                  <span aria-hidden="true">🔎</span>
-                  <input id="notesSearch" type="search" placeholder="Search chapter or class..." aria-label="Search notes" />
+                  <div class="notes-student">
+                    <h4>Student Access</h4>
+                    <div class="notes-search">
+                      <span aria-hidden="true">🔎</span>
+                      <input id="notesSearch" type="search" placeholder="Search chapter or class..." aria-label="Search notes" />
+                    </div>
+                    <div class="uploaded-note-list" id="uploadedNotesList"></div>
+                  </div>
                 </div>
-
-                <div class="uploaded-note-list" id="uploadedNotesList"></div>
 
                 <div class="notes-grid">
                   <div class="notes-accordion" style="grid-column: 1 / -1;">
