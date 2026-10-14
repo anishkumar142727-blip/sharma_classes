@@ -456,9 +456,13 @@
       }
       .note-box h4 { margin: 0 0 12px; color: var(--navy); }
       .note-box h5 { margin: 0 0 10px; color: var(--blue); font-size: 0.92rem; }
-      .chapter-list { list-style: none; padding: 0 18px 18px; margin: 0; display: grid; gap: 8px; }
+      .chapter-list { list-style: none; padding: 0 18px 18px; margin: 0; display: grid; gap: 8px; counter-reset: chapter; }
       .chapter-list li {
         display: flex; align-items: center; justify-content: space-between; gap: 8px; border-bottom: 1px dashed var(--line); padding-bottom: 8px;
+      }
+      .chapter-list.numbered li { justify-content: flex-start; }
+      .chapter-list.numbered li::before {
+        counter-increment: chapter; content: "Ch " counter(chapter); color: var(--blue); font-size: 0.8rem; font-weight: 800; min-width: 42px; flex-shrink: 0;
       }
       .chapter-list li:last-child { border-bottom: none; padding-bottom: 0; }
       .status {
@@ -940,6 +944,11 @@
                   <input id="notesSearch" type="search" placeholder="Search chapter or class..." aria-label="Search notes" />
                 </div>
                 <div class="uploaded-note-list" id="uploadedNotesList"></div>
+                <div class="chapter-directory-wrap">
+                  <h4>Class and subject chapters</h4>
+                  <p class="uploaded-note-sub">Choose your class to see chapter numbers and names.</p>
+                  <div class="notes-accordion" id="chapterDirectory"></div>
+                </div>
               </div>
             </div>
 
@@ -1124,7 +1133,19 @@
       const notesUploadForm = document.getElementById('notesUploadForm');
       const notesUploadStatus = document.getElementById('notesUploadStatus');
       const uploadedNotesList = document.getElementById('uploadedNotesList');
+      const chapterDirectory = document.getElementById('chapterDirectory');
       let isAdminAuthenticated = false;
+
+      const chapterGroups = [
+        { className: 'Class 7', subject: 'Science', chapters: ['Nutrition in Plants', 'Nutrition in Animals', 'Fibre to Fabric', 'Heat', 'Acids, Bases and Salts', 'Physical and Chemical Changes', 'Weather, Climate and Adaptations', 'Winds, Storms and Cyclones', 'Soil', 'Respiration in Organisms', 'Transportation in Animals and Plants', 'Reproduction in Plants', 'Motion and Time', 'Electric Current and Its Effects', 'Light', 'Forests: Our Lifeline', 'Water: A Precious Resource', 'Wastewater Story'] },
+        { className: 'Class 7', subject: 'Maths', chapters: ['Integers', 'Fractions and Decimals', 'Data Handling', 'Simple Equations', 'Lines and Angles', 'The Triangle and Its Properties', 'Comparing Quantities', 'Rational Numbers', 'Practical Geometry', 'Perimeter and Area', 'Algebraic Expressions', 'Exponents and Powers', 'Symmetry', 'Visualising Solid Shapes'] },
+        { className: 'Class 8', subject: 'Science', chapters: ['Crop Production and Management', 'Microorganisms: Friend and Foe', 'Coal and Petroleum', 'Combustion and Flame', 'Conservation of Plants and Animals', 'Cell: Structure and Functions', 'Reproduction in Animals', 'Reaching the Age of Adolescence', 'Force and Pressure', 'Friction', 'Sound', 'Chemical Effects of Electric Current', 'Some Natural Phenomena', 'Light', 'Stars and the Solar System', 'Pollution of Air and Water'] },
+        { className: 'Class 8', subject: 'Maths', chapters: ['Rational Numbers', 'Linear Equations in One Variable', 'Understanding Quadrilaterals', 'Data Handling', 'Squares and Square Roots', 'Cubes and Cube Roots', 'Comparing Quantities', 'Algebraic Expressions and Identities', 'Mensuration', 'Exponents and Powers', 'Direct and Inverse Proportions', 'Factorisation', 'Introduction to Graphs', 'Playing with Numbers'] },
+        { className: 'Class 9', subject: 'Science', chapters: ['Matter in Our Surroundings', 'Is Matter Around Us Pure?', 'Atoms and Molecules', 'Structure of the Atom', 'The Fundamental Unit of Life', 'Tissues', 'Diversity in Living Organisms', 'Motion', 'Forces and Laws of Motion', 'Gravitation', 'Work and Energy', 'Sound', 'Why Do We Fall Ill?', 'Natural Resources', 'Improvement in Food Resources'] },
+        { className: 'Class 9', subject: 'Maths', chapters: ['Number Systems', 'Polynomials', 'Coordinate Geometry', 'Linear Equations in Two Variables', 'Introduction to Euclid’s Geometry', 'Lines and Angles', 'Triangles', 'Quadrilaterals', 'Areas of Parallelograms and Triangles', 'Circles', 'Constructions', 'Heron’s Formula', 'Surface Areas and Volumes', 'Statistics', 'Probability'] },
+        { className: 'Class 10', subject: 'Science', chapters: ['Chemical Reactions and Equations', 'Acids, Bases and Salts', 'Metals and Non-metals', 'Carbon and Its Compounds', 'Periodic Classification of Elements', 'Life Processes', 'Control and Coordination', 'How do Organisms Reproduce?', 'Heredity and Evolution', 'Light – Reflection and Refraction', 'The Human Eye and the Colourful World', 'Electricity', 'Magnetic Effects of Electric Current', 'Sources of Energy', 'Our Environment', 'Sustainable Management of Natural Resources'] },
+        { className: 'Class 10', subject: 'Maths', chapters: ['Real Numbers', 'Polynomials', 'Pair of Linear Equations in Two Variables', 'Quadratic Equations', 'Arithmetic Progressions', 'Triangles', 'Coordinate Geometry', 'Introduction to Trigonometry', 'Some Applications of Trigonometry', 'Circles', 'Areas Related to Circles', 'Surface Areas and Volumes', 'Statistics', 'Probability'] }
+      ];
 
       function getStoredNotes() {
         try {
@@ -1136,6 +1157,21 @@
 
       function saveStoredNotes(notes) {
         localStorage.setItem('sharmaClassesNotes', JSON.stringify(notes));
+      }
+
+      function renderChapterDirectory() {
+        if (!chapterDirectory) return;
+
+        chapterDirectory.innerHTML = chapterGroups.map((group, groupIndex) => `
+          <details ${groupIndex === 0 ? 'open' : ''}>
+            <summary><span>${group.className} • ${group.subject}</span><span>${group.chapters.length} chapters</span></summary>
+            <div class="note-box">
+              <ol class="chapter-list numbered">
+                ${group.chapters.map((chapter) => `<li>${chapter}</li>`).join('')}
+              </ol>
+            </div>
+          </details>
+        `).join('');
       }
 
       function renderUploadedNotes() {
@@ -1270,13 +1306,30 @@
       document.getElementById('adminLogout').addEventListener('click', hideAdminPanel);
 
       renderUploadedNotes();
+      renderChapterDirectory();
 
       function filterNotes() {
         const q = (notesSearch?.value || '').toLowerCase().trim();
         const noteItems = uploadedNotesList ? uploadedNotesList.querySelectorAll('.uploaded-note-item') : [];
         noteItems.forEach((item) => {
           const text = item.innerText.toLowerCase();
-          item.style.display = q && !text.includes(q) ? 'none' : 'flex';
+          item.style.display = q && !text.includes(q) ? 'none' : '';
+        });
+
+        chapterDirectory?.querySelectorAll('details').forEach((group) => {
+          const summary = group.querySelector('summary');
+          const chapterItems = group.querySelectorAll('li');
+          const groupMatches = !q || summary.textContent.toLowerCase().includes(q);
+          let hasVisibleChapter = false;
+
+          chapterItems.forEach((item) => {
+            const matches = groupMatches || item.textContent.toLowerCase().includes(q);
+            item.style.display = matches ? '' : 'none';
+            hasVisibleChapter = hasVisibleChapter || matches;
+          });
+
+          group.style.display = hasVisibleChapter ? '' : 'none';
+          if (q && hasVisibleChapter) group.open = true;
         });
       }
 
