@@ -462,13 +462,38 @@
       }
       @media (max-width: 700px) {
         .topbar .wrap { justify-content: center; }
+        .topbar .wrap span:last-child { display: none; }
         .links { display: none; }
         .menu { display: block; }
         .navin { height: 72px; }
-        .brand { font-size: 0.95rem; }
-        .statgrid, .trust-grid, .feature-grid, .course-grid, .row2 { grid-template-columns: 1fr; }
-        .hero { padding-top: 48px; }
-        .hero-visual img { height: 360px; }
+        .brand { font-size: 0.9rem; }
+        .brand small { display: none; }
+        .brand-showcase {
+          display: block; padding: 14px; margin-bottom: 16px;
+        }
+        .primary-brand-banner { gap: 12px; }
+        .brand-mark {
+          width: 52px; height: 52px; border-radius: 16px; font-size: 1rem;
+        }
+        .brand-stack h2 { font-size: 1.7rem; }
+        .brand-stack p { font-size: 0.76rem; }
+        .note-cta {
+          width: 100%; margin-top: 12px; min-width: 0; padding: 14px 16px;
+        }
+        .statgrid, .trust-grid, .feature-grid, .course-grid, .row2, .outcome-grid, .process-grid, .support-grid { grid-template-columns: 1fr; }
+        .hero { padding-top: 36px; }
+        .hero-grid { gap: 22px; }
+        .hero h1 { font-size: clamp(2.6rem, 14vw, 4rem); }
+        .hero p { font-size: 0.98rem; }
+        .actions { display: grid; gap: 12px; }
+        .actions .btn, .btn { width: 100%; justify-content: center; }
+        .hero-badges { display: grid; grid-template-columns: 1fr; }
+        .hero-visual { min-height: 300px; }
+        .hero-visual img { height: 300px; border-radius: 22px; }
+        .float-card { padding: 10px 12px; font-size: 0.8rem; }
+        .float-card.one { right: 8px; top: 8px; }
+        .float-card.two { left: 8px; bottom: 8px; }
+        .section-head h2 { font-size: 1.9rem; }
         section { padding: 58px 0; }
         .course-art { height: 110px; }
         .founder { grid-template-columns: 1fr; }
