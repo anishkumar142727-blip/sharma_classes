@@ -188,6 +188,24 @@
       .process-card h3 { margin: 0 0 8px; color: var(--navy); }
       .process-card p { margin: 0; color: var(--muted); }
 
+      .support-grid {
+        display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 22px;
+      }
+      .support-card {
+        background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%); border: 1px solid var(--line); border-radius: 20px; padding: 22px 18px; box-shadow: 0 10px 22px rgba(11,31,64,0.04);
+      }
+      .support-card h3 { margin: 0 0 8px; color: var(--navy); }
+      .support-card p { margin: 0; color: var(--muted); }
+      .support-list {
+        list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px;
+      }
+      .support-list li {
+        display: flex; align-items: center; gap: 8px; color: var(--navy); font-weight: 700; font-size: 0.9rem;
+      }
+      .support-list li::before {
+        content: "✓"; color: var(--success); font-weight: 900;
+      }
+
       .about-grid {
         display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; align-items: center;
       }
@@ -545,6 +563,45 @@
             <article class="process-card"><div class="step">1</div><h3>Discuss goals</h3><p>We understand the student’s level, strengths, and areas that need support.</p></article>
             <article class="process-card"><div class="step">2</div><h3>Choose the path</h3><p>Parents and students decide the most suitable academic or skill-based learning approach.</p></article>
             <article class="process-card"><div class="step">3</div><h3>Start learning</h3><p>Classes begin with clarity, consistency, and a supportive environment for steady progress.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">What students get</div>
+            <h2>Support that keeps learning moving</h2>
+            <p>Our guidance is designed to help students feel more confident, more prepared, and more consistent.</p>
+          </div>
+          <div class="support-grid">
+            <article class="support-card">
+              <h3>Academic clarity</h3>
+              <p>Clear explanations for school subjects and exam-based practice that reduces stress.</p>
+              <ul class="support-list">
+                <li>Maths & Science support</li>
+                <li>Concept-first explanations</li>
+                <li>Regular revision</li>
+              </ul>
+            </article>
+            <article class="support-card">
+              <h3>Digital confidence</h3>
+              <p>Students build useful digital and practical skills that help in school and future work.</p>
+              <ul class="support-list">
+                <li>Computer basics</li>
+                <li>Excel and productivity tools</li>
+                <li>Creative digital learning</li>
+              </ul>
+            </article>
+            <article class="support-card">
+              <h3>Parent trust</h3>
+              <p>We keep the teaching approach simple, honest, and focused on actual student growth.</p>
+              <ul class="support-list">
+                <li>Regular guidance</li>
+                <li>Confidence building</li>
+                <li>Student-first approach</li>
+              </ul>
+            </article>
           </div>
         </div>
       </section>
