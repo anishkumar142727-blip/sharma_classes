@@ -880,272 +880,110 @@
 
           <div class="notes-box">
             <div class="notes-wrap">
-              <div class="notes-login" id="notesLoginBox">
+              <div class="notes-login" id="studentLoginBox">
                 <div class="notes-quick">
                   <span class="chip">📘 Classes 7 to 10</span>
                   <span class="chip">🧠 Science & Maths</span>
                   <span class="chip">📚 CBSE chapter list</span>
                 </div>
-                <form id="notesLoginForm">
+                <form id="studentLoginForm">
                   <div class="row2">
                     <div>
-                      <label for="notesUserId">User ID</label>
-                      <input id="notesUserId" type="text" placeholder="Enter your user ID" required />
+                      <label for="studentUserId">Student User ID</label>
+                      <input id="studentUserId" type="text" placeholder="Enter your user ID" required />
                     </div>
                     <div>
-                      <label for="notesPassword">Password</label>
-                      <input id="notesPassword" type="password" placeholder="Enter your password" required />
+                      <label for="studentPassword">Student Password</label>
+                      <input id="studentPassword" type="password" placeholder="Enter your password" required />
                     </div>
                   </div>
-                  <button class="btn" type="submit">Open Notes</button>
+                  <button class="btn" type="submit">Open Student Notes</button>
                 </form>
-                <p class="notice">Use the login provided by your teacher for your class notes and study material.</p>
-                <p class="notes-error" id="notesError"></p>
+                <p class="notice">Use the student login to view notes shared for your class.</p>
+                <p class="notes-error" id="studentNotesError"></p>
               </div>
 
-              <div class="notes-panel hidden" id="notesPanel">
-                <div class="notes-header">
-                  <h3>Class Notes</h3>
-                  <button class="btn light" type="button" id="notesLogout">Logout</button>
+              <div class="notes-login" id="adminLoginBox">
+                <div class="notes-quick">
+                  <span class="chip">🔐 Admin Access</span>
+                  <span class="chip">📤 Upload Notes & PDFs</span>
+                  <span class="chip">🛡️ Private only</span>
                 </div>
-
-                <div class="notes-portal">
-                  <div class="notes-admin">
-                    <div class="notes-upload-head">
-                      <h4>Admin Upload</h4>
-                      <span class="status ready">Live</span>
+                <form id="adminLoginForm">
+                  <div class="row2">
+                    <div>
+                      <label for="adminUserId">Admin User ID</label>
+                      <input id="adminUserId" type="text" placeholder="Enter admin user ID" required />
                     </div>
-                    <form id="notesUploadForm">
-                      <div class="notes-upload-grid">
-                        <div>
-                          <label for="uploadClass">Class</label>
-                          <select id="uploadClass">
-                            <option>Class 7</option>
-                            <option>Class 8</option>
-                            <option>Class 9</option>
-                            <option selected>Class 10</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label for="uploadSubject">Subject</label>
-                          <select id="uploadSubject">
-                            <option selected>Science</option>
-                            <option>Maths</option>
-                          </select>
-                        </div>
-                        <div class="full">
-                          <label for="uploadTitle">Chapter / Topic</label>
-                          <input id="uploadTitle" type="text" placeholder="e.g. Light Reflection and Refraction" required />
-                        </div>
-                        <div class="full">
-                          <label for="uploadFile">Select PDF or note file</label>
-                          <input id="uploadFile" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
-                        </div>
-                      </div>
-                      <button class="btn" type="submit">Upload Note</button>
-                      <div class="notes-upload-status" id="notesUploadStatus"></div>
-                    </form>
-                  </div>
-
-                  <div class="notes-student">
-                    <h4>Student Access</h4>
-                    <div class="notes-search">
-                      <span aria-hidden="true">🔎</span>
-                      <input id="notesSearch" type="search" placeholder="Search chapter or class..." aria-label="Search notes" />
+                    <div>
+                      <label for="adminPassword">Admin Password</label>
+                      <input id="adminPassword" type="password" placeholder="Enter admin password" required />
                     </div>
-                    <div class="uploaded-note-list" id="uploadedNotesList"></div>
                   </div>
+                  <button class="btn blue" type="submit">Open Admin Panel</button>
+                </form>
+                <p class="notice">Only the admin can upload notes, PDFs, and chapter files.</p>
+                <p class="notes-error" id="adminNotesError"></p>
+              </div>
+            </div>
+
+            <div class="notes-panel hidden" id="studentNotesPanel">
+              <div class="notes-header">
+                <h3>Student Notes</h3>
+                <button class="btn light" type="button" id="studentLogout">Logout</button>
+              </div>
+
+              <div class="notes-student">
+                <h4>Student Access</h4>
+                <div class="notes-search">
+                  <span aria-hidden="true">🔎</span>
+                  <input id="notesSearch" type="search" placeholder="Search chapter or class..." aria-label="Search notes" />
                 </div>
+                <div class="uploaded-note-list" id="uploadedNotesList"></div>
+              </div>
+            </div>
 
-                <div class="notes-grid">
-                  <div class="notes-accordion" style="grid-column: 1 / -1;">
-                    <details open>
-                      <summary><span>Class 7 • Science</span><span>18 chapters</span></summary>
-                      <div class="note-box">
-                        <ul class="chapter-list">
-                          <li><span>Nutrition in Plants</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Nutrition in Animals</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Fibre to Fabric</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Heat</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Acids, Bases and Salts</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Physical and Chemical Changes</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Weather, Climate and Adaptations</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Winds, Storms and Cyclones</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Soil</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Respiration in Organisms</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Transportation in Animals and Plants</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Reproduction in Plants</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Motion and Time</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Electric Current and Its Effects</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Light</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Forests: Our Lifeline</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Water: A Precious Resource</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Wastewater Story</span><span class="status coming">Coming soon</span></li>
-                        </ul>
-                      </div>
-                    </details>
+            <div class="notes-panel hidden" id="adminNotesPanel">
+              <div class="notes-header">
+                <h3>Admin Upload Panel</h3>
+                <button class="btn light" type="button" id="adminLogout">Logout</button>
+              </div>
 
-                    <details>
-                      <summary><span>Class 7 • Maths</span><span>14 chapters</span></summary>
-                      <div class="note-box">
-                        <ul class="chapter-list">
-                          <li><span>Integers</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Fractions and Decimals</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Data Handling</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Simple Equations</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Lines and Angles</span><span class="status coming">Coming soon</span></li>
-                          <li><span>The Triangle and Its Properties</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Comparing Quantities</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Rational Numbers</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Practical Geometry</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Perimeter and Area</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Algebraic Expressions</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Exponents and Powers</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Symmetry</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Visualising Solid Shapes</span><span class="status coming">Coming soon</span></li>
-                        </ul>
-                      </div>
-                    </details>
-
-                    <details>
-                      <summary><span>Class 8 • Science</span><span>16 chapters</span></summary>
-                      <div class="note-box">
-                        <ul class="chapter-list">
-                          <li><span>Crop Production and Management</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Microorganisms: Friend and Foe</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Coal and Petroleum</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Combustion and Flame</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Conservation of Plants and Animals</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Cell: Structure and Functions</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Reproduction in Animals</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Reaching the Age of Adolescence</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Force and Pressure</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Friction</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Sound</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Chemical Effects of Electric Current</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Some Natural Phenomena</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Light</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Stars and the Solar System</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Pollution of Air and Water</span><span class="status coming">Coming soon</span></li>
-                        </ul>
-                      </div>
-                    </details>
-
-                    <details>
-                      <summary><span>Class 8 • Maths</span><span>14 chapters</span></summary>
-                      <div class="note-box">
-                        <ul class="chapter-list">
-                          <li><span>Rational Numbers</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Linear Equations in One Variable</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Understanding Quadrilaterals</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Data Handling</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Squares and Square Roots</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Cubes and Cube Roots</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Comparing Quantities</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Algebraic Expressions and Identities</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Mensuration</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Exponents and Powers</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Direct and Inverse Proportions</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Factorisation</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Introduction to Graphs</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Playing with Numbers</span><span class="status coming">Coming soon</span></li>
-                        </ul>
-                      </div>
-                    </details>
-
-                    <details>
-                      <summary><span>Class 9 • Science</span><span>15 chapters</span></summary>
-                      <div class="note-box">
-                        <ul class="chapter-list">
-                          <li><span>Matter in Our Surroundings</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Is Matter Around Us Pure?</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Atoms and Molecules</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Structure of the Atom</span><span class="status coming">Coming soon</span></li>
-                          <li><span>The Fundamental Unit of Life</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Tissues</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Diversity in Living Organisms</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Motion</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Forces and Laws of Motion</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Gravitation</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Work and Energy</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Sound</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Why Do We Fall Ill?</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Natural Resources</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Improvement in Food Resources</span><span class="status coming">Coming soon</span></li>
-                        </ul>
-                      </div>
-                    </details>
-
-                    <details>
-                      <summary><span>Class 9 • Maths</span><span>15 chapters</span></summary>
-                      <div class="note-box">
-                        <ul class="chapter-list">
-                          <li><span>Number Systems</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Polynomials</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Coordinate Geometry</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Linear Equations in Two Variables</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Introduction to Euclid’s Geometry</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Lines and Angles</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Triangles</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Quadrilaterals</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Areas of Parallelograms and Triangles</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Circles</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Constructions</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Heron’s Formula</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Surface Areas and Volumes</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Statistics</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Probability</span><span class="status coming">Coming soon</span></li>
-                        </ul>
-                      </div>
-                    </details>
-
-                    <details>
-                      <summary><span>Class 10 • Science</span><span>16 chapters</span></summary>
-                      <div class="note-box">
-                        <ul class="chapter-list">
-                          <li><span>Chemical Reactions and Equations</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Acids, Bases and Salts</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Metals and Non-metals</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Carbon and Its Compounds</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Periodic Classification of Elements</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Life Processes</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Control and Coordination</span><span class="status coming">Coming soon</span></li>
-                          <li><span>How do Organisms Reproduce?</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Heredity and Evolution</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Light – Reflection and Refraction</span><span class="status coming">Coming soon</span></li>
-                          <li><span>The Human Eye and the Colourful World</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Electricity</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Magnetic Effects of Electric Current</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Sources of Energy</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Our Environment</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Sustainable Management of Natural Resources</span><span class="status coming">Coming soon</span></li>
-                        </ul>
-                      </div>
-                    </details>
-
-                    <details>
-                      <summary><span>Class 10 • Maths</span><span>14 chapters</span></summary>
-                      <div class="note-box">
-                        <ul class="chapter-list">
-                          <li><span>Real Numbers</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Polynomials</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Pair of Linear Equations in Two Variables</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Quadratic Equations</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Arithmetic Progressions</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Triangles</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Coordinate Geometry</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Introduction to Trigonometry</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Some Applications of Trigonometry</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Circles</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Areas Related to Circles</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Surface Areas and Volumes</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Statistics</span><span class="status coming">Coming soon</span></li>
-                          <li><span>Probability</span><span class="status coming">Coming soon</span></li>
-                        </ul>
-                      </div>
-                    </details>
+              <div class="notes-admin">
+                <div class="notes-upload-head">
+                  <h4>Admin Upload</h4>
+                  <span class="status ready">Live</span>
+                </div>
+                <form id="notesUploadForm">
+                  <div class="notes-upload-grid">
+                    <div>
+                      <label for="uploadClass">Class</label>
+                      <select id="uploadClass">
+                        <option>Class 7</option>
+                        <option>Class 8</option>
+                        <option>Class 9</option>
+                        <option selected>Class 10</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="uploadSubject">Subject</label>
+                      <select id="uploadSubject">
+                        <option selected>Science</option>
+                        <option>Maths</option>
+                      </select>
+                    </div>
+                    <div class="full">
+                      <label for="uploadTitle">Chapter / Topic</label>
+                      <input id="uploadTitle" type="text" placeholder="e.g. Light Reflection and Refraction" required />
+                    </div>
+                    <div class="full">
+                      <label for="uploadFile">Select PDF or note file</label>
+                      <input id="uploadFile" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
+                    </div>
                   </div>
-                </div>
+                  <button class="btn" type="submit">Upload Note</button>
+                  <div class="notes-upload-status" id="notesUploadStatus"></div>
+                </form>
               </div>
             </div>
           </div>
@@ -1271,15 +1109,22 @@
     <a class="whatsapp" href="https://wa.me/918076335897?text=Hi%20Sharma%20Classes%2C%20I%20want%20to%20know%20more%20about%20your%20courses%20and%20fees." target="_blank" rel="noopener noreferrer" aria-label="Contact Sharma Classes on WhatsApp">✆ WhatsApp</a>
 
     <script>
-      const NOTES_USERS = { sharma7: 'anishbhaiya' };
-      const notesLoginBox = document.getElementById('notesLoginBox');
-      const notesPanel = document.getElementById('notesPanel');
-      const notesLoginForm = document.getElementById('notesLoginForm');
-      const notesError = document.getElementById('notesError');
+      const STUDENT_USERS = { sharma7: 'anishbhaiya' };
+      const ADMIN_USERS = { sharmaadmin: 'admin123' };
+
+      const studentLoginBox = document.getElementById('studentLoginBox');
+      const adminLoginBox = document.getElementById('adminLoginBox');
+      const studentNotesPanel = document.getElementById('studentNotesPanel');
+      const adminNotesPanel = document.getElementById('adminNotesPanel');
+      const studentLoginForm = document.getElementById('studentLoginForm');
+      const adminLoginForm = document.getElementById('adminLoginForm');
+      const studentNotesError = document.getElementById('studentNotesError');
+      const adminNotesError = document.getElementById('adminNotesError');
       const notesSearch = document.getElementById('notesSearch');
       const notesUploadForm = document.getElementById('notesUploadForm');
       const notesUploadStatus = document.getElementById('notesUploadStatus');
       const uploadedNotesList = document.getElementById('uploadedNotesList');
+      let isAdminAuthenticated = false;
 
       function getStoredNotes() {
         try {
@@ -1320,32 +1165,69 @@
         }).join('');
       }
 
-      function showNotesPanel() {
-        notesLoginBox.classList.add('hidden');
-        notesPanel.classList.remove('hidden');
+      function showStudentPanel() {
+        studentLoginBox.classList.add('hidden');
+        adminLoginBox.classList.add('hidden');
+        studentNotesPanel.classList.remove('hidden');
+        adminNotesPanel.classList.add('hidden');
         renderUploadedNotes();
       }
 
-      function hideNotesPanel() {
-        notesPanel.classList.add('hidden');
-        notesLoginBox.classList.remove('hidden');
-        notesLoginForm.reset();
-        notesError.textContent = '';
+      function showAdminPanel() {
+        studentLoginBox.classList.add('hidden');
+        adminLoginBox.classList.add('hidden');
+        studentNotesPanel.classList.add('hidden');
+        adminNotesPanel.classList.remove('hidden');
       }
 
-      notesLoginForm.addEventListener('submit', function (e) {
+      function hideStudentPanel() {
+        studentNotesPanel.classList.add('hidden');
+        studentLoginBox.classList.remove('hidden');
+        adminLoginBox.classList.remove('hidden');
+        studentLoginForm.reset();
+        studentNotesError.textContent = '';
+      }
+
+      function hideAdminPanel() {
+        isAdminAuthenticated = false;
+        adminNotesPanel.classList.add('hidden');
+        studentLoginBox.classList.remove('hidden');
+        adminLoginBox.classList.remove('hidden');
+        adminLoginForm.reset();
+        adminNotesError.textContent = '';
+      }
+
+      studentLoginForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const userId = document.getElementById('notesUserId').value.trim();
-        const password = document.getElementById('notesPassword').value.trim();
-        if (NOTES_USERS[userId] && NOTES_USERS[userId] === password) {
-          showNotesPanel();
+        const userId = document.getElementById('studentUserId').value.trim();
+        const password = document.getElementById('studentPassword').value.trim();
+        if (STUDENT_USERS[userId] && STUDENT_USERS[userId] === password) {
+          showStudentPanel();
         } else {
-          notesError.textContent = 'Incorrect User ID or Password. Please contact your teacher.';
+          studentNotesError.textContent = 'Incorrect student User ID or Password.';
+        }
+      });
+
+      adminLoginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const userId = document.getElementById('adminUserId').value.trim();
+        const password = document.getElementById('adminPassword').value.trim();
+        if (ADMIN_USERS[userId] && ADMIN_USERS[userId] === password) {
+          isAdminAuthenticated = true;
+          showAdminPanel();
+        } else {
+          adminNotesError.textContent = 'Incorrect admin User ID or Password.';
         }
       });
 
       notesUploadForm?.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (!isAdminAuthenticated) {
+          notesUploadStatus.textContent = 'Please sign in with the admin account before uploading.';
+          notesUploadStatus.style.color = '#c03737';
+          return;
+        }
+
         const title = document.getElementById('uploadTitle').value.trim();
         const className = document.getElementById('uploadClass').value;
         const subject = document.getElementById('uploadSubject').value;
@@ -1384,15 +1266,17 @@
         }
       });
 
-      document.getElementById('notesLogout').addEventListener('click', hideNotesPanel);
+      document.getElementById('studentLogout').addEventListener('click', hideStudentPanel);
+      document.getElementById('adminLogout').addEventListener('click', hideAdminPanel);
 
       renderUploadedNotes();
 
       function filterNotes() {
         const q = (notesSearch?.value || '').toLowerCase().trim();
-        document.querySelectorAll('.notes-accordion details').forEach((detail) => {
-          const text = detail.innerText.toLowerCase();
-          detail.style.display = q && !text.includes(q) ? 'none' : '';
+        const noteItems = uploadedNotesList ? uploadedNotesList.querySelectorAll('.uploaded-note-item') : [];
+        noteItems.forEach((item) => {
+          const text = item.innerText.toLowerCase();
+          item.style.display = q && !text.includes(q) ? 'none' : 'flex';
         });
       }
 
