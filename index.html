@@ -402,6 +402,12 @@
       .uploaded-note-sub {
         color: var(--muted); font-size: 0.8rem;
       }
+      .uploaded-note-actions {
+        display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+      }
+      .download-link {
+        display: inline-flex; align-items: center; justify-content: center; padding: 7px 10px; border-radius: 10px; background: var(--navy); color: white; font-size: 0.75rem; font-weight: 800; text-decoration: none;
+      }
       .status.ready { background: rgba(27,156,103,0.12); color: var(--success); }
       .notes-upload-status {
         min-height: 18px; font-size: 0.85rem; font-weight: 700; color: var(--success);
@@ -1285,13 +1291,17 @@
 
         uploadedNotesList.innerHTML = notes.map((note) => {
           const fileLabel = note.fileName ? note.fileName : 'No file uploaded';
+          const downloadHtml = note.fileData ? `<a class="download-link" href="${note.fileData}" download="${note.fileName || note.title}">Download</a>` : '<span class="status coming">No file</span>';
           return `
             <div class="uploaded-note-item">
               <div class="uploaded-note-meta">
                 <span class="uploaded-note-title">${note.title}</span>
                 <span class="uploaded-note-sub">${note.className} • ${note.subject} • ${fileLabel}</span>
               </div>
-              <span class="status ready">Added</span>
+              <div class="uploaded-note-actions">
+                <span class="status ready">Added</span>
+                ${downloadHtml}
+              </div>
             </div>
           `;
         }).join('');
@@ -1327,7 +1337,8 @@
         const className = document.getElementById('uploadClass').value;
         const subject = document.getElementById('uploadSubject').value;
         const fileInput = document.getElementById('uploadFile');
-        const fileName = fileInput && fileInput.files && fileInput.files[0] ? fileInput.files[0].name : 'No file selected';
+        const file = fileInput && fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+        const fileName = file ? file.name : 'No file selected';
 
         if (!title) {
           notesUploadStatus.textContent = 'Please enter a chapter or topic name.';
@@ -1336,12 +1347,28 @@
         }
 
         const notes = getStoredNotes();
-        notes.unshift({ title, className, subject, fileName, addedAt: new Date().toISOString() });
-        saveStoredNotes(notes);
-        renderUploadedNotes();
-        notesUploadStatus.textContent = 'Note uploaded successfully.';
-        notesUploadStatus.style.color = '#1b9c67';
-        notesUploadForm.reset();
+        const newNote = { title, className, subject, fileName, addedAt: new Date().toISOString() };
+
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function () {
+            newNote.fileData = reader.result;
+            notes.unshift(newNote);
+            saveStoredNotes(notes);
+            renderUploadedNotes();
+            notesUploadStatus.textContent = 'Note uploaded successfully.';
+            notesUploadStatus.style.color = '#1b9c67';
+            notesUploadForm.reset();
+          };
+          reader.readAsDataURL(file);
+        } else {
+          notes.unshift(newNote);
+          saveStoredNotes(notes);
+          renderUploadedNotes();
+          notesUploadStatus.textContent = 'Note saved successfully.';
+          notesUploadStatus.style.color = '#1b9c67';
+          notesUploadForm.reset();
+        }
       });
 
       document.getElementById('notesLogout').addEventListener('click', hideNotesPanel);
