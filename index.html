@@ -88,6 +88,7 @@
         background: var(--orange); transform: scaleX(0); transform-origin: left; transition: 0.2s ease;
       }
       .links a:hover::after { transform: scaleX(1); }
+        .links a[aria-current="page"]::after { transform: scaleX(1); }
       .links.open {
         display: flex; position: absolute; top: 76px; left: 0; right: 0; margin: 0 4%; padding: 18px 16px; background: rgba(255,255,255,0.98); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 20px 34px rgba(11,31,64,0.1); flex-direction: column; align-items: flex-start; gap: 12px;
       }
@@ -345,6 +346,28 @@
       .notes-box {
         background: linear-gradient(135deg, rgba(26,95,193,0.04), rgba(255,122,26,0.05)); border: 1px solid var(--line); border-radius: 26px; padding: 26px;
       }
+      .resource-tools {
+        display: grid; grid-template-columns: minmax(0,1fr) repeat(2, minmax(170px,220px)); gap: 12px; margin-bottom: 12px;
+      }
+      .resource-tools label {
+        display: grid; gap: 6px; color: var(--navy); font-size: 0.85rem; font-weight: 800;
+      }
+      .resource-tools input, .resource-tools select {
+        width: 100%; min-width: 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; background: white; color: var(--ink); font: inherit;
+      }
+      .resource-tools input:focus, .resource-tools select:focus { outline: 3px solid rgba(26,95,193,0.18); border-color: var(--blue); }
+      .resource-count { min-height: 24px; margin: 0 0 14px; color: var(--muted); font-size: 0.9rem; }
+      .resource-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+      .resource-card { min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: white; }
+      .resource-card[hidden] { display: none; }
+      .resource-card h3 { margin: 12px 0 6px; color: var(--navy); }
+      .resource-card > p { margin: 0; color: var(--muted); }
+      .resource-topline { display: flex; flex-wrap: wrap; gap: 8px; }
+      .resource-topics { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; margin: 14px 0 18px; padding: 0; }
+      .resource-topics li { padding: 5px 9px; border-radius: 999px; background: var(--blue-soft); color: var(--navy); font-size: 0.78rem; font-weight: 700; }
+      .resource-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+      .resource-actions .btn { padding: 10px 14px; border-radius: 10px; font-size: 0.88rem; }
+      .resource-empty { margin: 0; padding: 20px; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); text-align: center; }
       .notes-wrap {
         display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 24px; align-items: start;
       }
@@ -510,6 +533,7 @@
         position: fixed; right: 22px; bottom: 22px; z-index: 20; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         background: linear-gradient(135deg, #22c55e, #16a34a); color: white; font-weight: 900; border-radius: 999px; padding: 16px 20px; box-shadow: 0 16px 32px rgba(34,197,94,0.3); border: 2px solid rgba(255,255,255,0.25);
       }
+      [hidden] { display: none !important; }
 
       @media (max-width: 980px) {
         .hero-grid, .about-grid, .notes-wrap, .contact-grid { grid-template-columns: 1fr; }
@@ -539,6 +563,8 @@
           width: 100%; margin-top: 12px; min-width: 0; padding: 14px 16px;
         }
         .statgrid, .trust-grid, .feature-grid, .course-grid, .row2, .outcome-grid, .process-grid, .support-grid { grid-template-columns: 1fr; }
+          .resource-tools, .resource-grid { grid-template-columns: 1fr; }
+          .resource-actions { display: grid; }
         .hero { padding-top: 36px; }
         .hero-grid { gap: 22px; }
         .hero h1 { font-size: clamp(2.6rem, 14vw, 4rem); }
@@ -574,7 +600,7 @@
 
     <header class="nav">
       <div class="wrap navin">
-        <a class="brand" href="#home">
+        <a class="brand" href="?page=home">
           <span class="logo">
             <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 10v17"/>
@@ -589,22 +615,22 @@
         </a>
 
         <nav class="links" id="navlinks">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#courses">Courses</a>
-          <a href="#why">Why Us</a>
-          <a href="#founder">Founder</a>
-          <a href="#notes">Notes</a>
-          <a href="#contact">Contact</a>
+          <a href="?page=home">Home</a>
+          <a href="?page=about">About</a>
+          <a href="?page=courses">Courses</a>
+          <a href="?page=why">Why Us</a>
+          <a href="?page=founder">Founder</a>
+          <a href="?page=notes">Notes</a>
+          <a href="?page=contact">Contact</a>
         </nav>
 
-        <a class="btn blue" href="#notes">Student Notes</a>
+        <a class="btn blue" href="?page=notes">Student Notes</a>
         <button class="menu" aria-label="Open menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
       </div>
     </header>
 
     <main>
-      <section class="hero" id="home">
+      <section class="hero" id="home" data-page="home">
         <div class="wrap hero-grid">
           <div>
             <div class="brand-showcase">
@@ -616,13 +642,13 @@
                   <p>Founder: Anish Sharma</p>
                 </div>
               </div>
-              <a class="note-cta" href="#notes">Student Notes</a>
+              <a class="note-cta" href="?page=notes">Student Notes</a>
             </div>
             <div class="eyebrow">Your goals • Our guidance • Your future</div>
             <h1>Learn Today.<br />Lead <span>Tomorrow.</span></h1>
             <p>Sharma Classes is built for students who want clearer concepts, stronger fundamentals, and more confidence in class, exams, and everyday learning.</p>
             <div class="actions">
-              <a class="btn" href="#courses">Explore Courses →</a>
+              <a class="btn" href="?page=courses">Explore Courses →</a>
               <a class="btn light" href="https://wa.me/918076335897?text=Hi%20Sharma%20Classes%2C%20I%20want%20to%20book%20a%20free%20demo%20for%20my%20child." target="_blank" rel="noopener noreferrer">Book a Free Demo</a>
             </div>
             <div class="hero-badges">
@@ -641,7 +667,7 @@
         </div>
       </section>
 
-      <div class="stats">
+      <div class="stats" data-page="home">
         <div class="wrap statgrid">
           <div class="stat"><strong>Student-first</strong><span>Teaching approach</span></div>
           <div class="stat"><strong>Practical</strong><span>Learning mindset</span></div>
@@ -650,14 +676,14 @@
         </div>
       </div>
 
-      <div class="promise-strip">
+      <div class="promise-strip" data-page="home">
         <span>📚 School subject support</span>
         <span>🧠 Concept clarity</span>
         <span>📈 Steady academic growth</span>
         <span>💻 Digital skills & future readiness</span>
       </div>
 
-      <section class="roadmap">
+      <section class="roadmap" data-page="home">
         <div class="wrap">
           <div class="section-head">
             <div class="kicker">How we help</div>
@@ -673,7 +699,7 @@
         </div>
       </section>
 
-      <section>
+      <section data-page="home">
         <div class="wrap">
           <div class="section-head">
             <div class="kicker">How enrollment works</div>
@@ -688,7 +714,7 @@
         </div>
       </section>
 
-      <section>
+      <section data-page="home">
         <div class="wrap">
           <div class="section-head">
             <div class="kicker">What students get</div>
@@ -727,7 +753,7 @@
         </div>
       </section>
 
-      <section id="about">
+      <section id="about" data-page="about">
         <div class="wrap about-grid">
           <img class="photo" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=85" alt="Students learning in a classroom" />
           <div class="about-copy">
@@ -738,7 +764,7 @@
             </div>
             <p>Sharma Classes was created with a simple idea: every student deserves guidance that is clear, patient, and practical. We believe strong fundamentals create confidence, and confidence creates long-term academic success.</p>
             <p>Whether a student is struggling with basics or aiming for stronger performance, our approach focuses on explanation, revision, doubt solving, and steady growth.</p>
-            <a class="btn blue" href="#founder">Meet the Founder →</a>
+            <a class="btn blue" href="?page=founder">Meet the Founder →</a>
             <div class="mission">
               <div class="mini"><b>🎯 Our Mission</b><p>Help students improve concepts, build confidence, and grow through consistent support.</p></div>
               <div class="mini"><b>👁 Our Vision</b><p>Become a trusted learning partner known for clarity, care, and real progress.</p></div>
@@ -747,7 +773,7 @@
         </div>
       </section>
 
-      <section class="trust-section">
+      <section class="trust-section" data-page="why">
         <div class="wrap">
           <div class="section-head">
             <div class="kicker">Why families choose us</div>
@@ -774,7 +800,7 @@
         </div>
       </section>
 
-      <section id="why">
+      <section id="why" data-page="why">
         <div class="wrap">
           <div class="section-head">
             <div class="kicker">Why learn with us?</div>
@@ -792,7 +818,7 @@
         </div>
       </section>
 
-      <section class="courses" id="courses">
+      <section class="courses" id="courses" data-page="courses">
         <div class="wrap">
           <div class="section-head">
             <div class="kicker">Explore & learn</div>
@@ -809,20 +835,20 @@
             </select>
           </div>
           <div class="course-grid" id="courseGrid">
-            <article class="course" data-category="computer"><div class="course-art">💻</div><div class="course-body"><span class="tag">Computer Skills</span><h3>Basic Computer Course</h3><p>Build confidence with computers, files, internet tools, and day-to-day digital usage.</p><a class="more" href="#contact" data-course="Basic Computer Course">Enquire about course →</a></div></article>
-            <article class="course" data-category="computer"><div class="course-art">📊</div><div class="course-body"><span class="tag">Office Productivity</span><h3>MS Office & Excel</h3><p>Learn documents, spreadsheets, presentations, and productivity workflows used in daily life.</p><a class="more" href="#contact" data-course="MS Office & Excel">Enquire about course →</a></div></article>
-            <article class="course" data-category="computer"><div class="course-art">🧾</div><div class="course-body"><span class="tag">Accounting</span><h3>Tally & Accounting</h3><p>Explore practical accounting skills and business record-keeping basics.</p><a class="more" href="#contact" data-course="Tally & Accounting">Enquire about course →</a></div></article>
-            <article class="course" data-category="digital"><div class="course-art">🌐</div><div class="course-body"><span class="tag">Technology</span><h3>Web Designing</h3><p>Understand website structure, design basics, and visual layout for digital creation.</p><a class="more" href="#contact" data-course="Web Designing">Enquire about course →</a></div></article>
-            <article class="course" data-category="digital"><div class="course-art">🎨</div><div class="course-body"><span class="tag">Creative Skills</span><h3>Graphic Designing</h3><p>Develop design thinking, typography, and creative communication through digital tools.</p><a class="more" href="#contact" data-course="Graphic Designing">Enquire about course →</a></div></article>
-            <article class="course" data-category="digital"><div class="course-art">📣</div><div class="course-body"><span class="tag">Digital Skills</span><h3>Digital Marketing</h3><p>Understand online promotion, audience engagement, and practical digital strategy basics.</p><a class="more" href="#contact" data-course="Digital Marketing">Enquire about course →</a></div></article>
-            <article class="course" data-category="digital"><div class="course-art">🐍</div><div class="course-body"><span class="tag">Programming</span><h3>Python Programming</h3><p>Learn logic building, coding fundamentals, and the basics of Python in a student-friendly way.</p><a class="more" href="#contact" data-course="Python Programming">Enquire about course →</a></div></article>
-            <article class="course" data-category="school"><div class="course-art">📚</div><div class="course-body"><span class="tag">Academic Coaching</span><h3>Academic Coaching</h3><p>Structured support for school subjects, concept practice, and better class performance.</p><a class="more" href="#contact" data-course="Academic Coaching">Enquire about course →</a></div></article>
+            <article class="course" data-category="computer"><div class="course-art">💻</div><div class="course-body"><span class="tag">Computer Skills</span><h3>Basic Computer Course</h3><p>Build confidence with computers, files, internet tools, and day-to-day digital usage.</p><a class="more" href="?page=contact" data-course="Basic Computer Course">Enquire about course →</a></div></article>
+            <article class="course" data-category="computer"><div class="course-art">📊</div><div class="course-body"><span class="tag">Office Productivity</span><h3>MS Office & Excel</h3><p>Learn documents, spreadsheets, presentations, and productivity workflows used in daily life.</p><a class="more" href="?page=contact" data-course="MS Office & Excel">Enquire about course →</a></div></article>
+            <article class="course" data-category="computer"><div class="course-art">🧾</div><div class="course-body"><span class="tag">Accounting</span><h3>Tally & Accounting</h3><p>Explore practical accounting skills and business record-keeping basics.</p><a class="more" href="?page=contact" data-course="Tally & Accounting">Enquire about course →</a></div></article>
+            <article class="course" data-category="digital"><div class="course-art">🌐</div><div class="course-body"><span class="tag">Technology</span><h3>Web Designing</h3><p>Understand website structure, design basics, and visual layout for digital creation.</p><a class="more" href="?page=contact" data-course="Web Designing">Enquire about course →</a></div></article>
+            <article class="course" data-category="digital"><div class="course-art">🎨</div><div class="course-body"><span class="tag">Creative Skills</span><h3>Graphic Designing</h3><p>Develop design thinking, typography, and creative communication through digital tools.</p><a class="more" href="?page=contact" data-course="Graphic Designing">Enquire about course →</a></div></article>
+            <article class="course" data-category="digital"><div class="course-art">📣</div><div class="course-body"><span class="tag">Digital Skills</span><h3>Digital Marketing</h3><p>Understand online promotion, audience engagement, and practical digital strategy basics.</p><a class="more" href="?page=contact" data-course="Digital Marketing">Enquire about course →</a></div></article>
+            <article class="course" data-category="digital"><div class="course-art">🐍</div><div class="course-body"><span class="tag">Programming</span><h3>Python Programming</h3><p>Learn logic building, coding fundamentals, and the basics of Python in a student-friendly way.</p><a class="more" href="?page=contact" data-course="Python Programming">Enquire about course →</a></div></article>
+            <article class="course" data-category="school"><div class="course-art">📚</div><div class="course-body"><span class="tag">Academic Coaching</span><h3>Academic Coaching</h3><p>Structured support for school subjects, concept practice, and better class performance.</p><a class="more" href="?page=contact" data-course="Academic Coaching">Enquire about course →</a></div></article>
           </div>
           <p class="notice">Tip: This list can be updated anytime with your actual subjects, student levels, timings, fees, and board syllabus.</p>
         </div>
       </section>
 
-      <section class="founders" id="founder">
+      <section class="founders" id="founder" data-page="founder">
         <div class="wrap">
           <div class="section-head">
             <div class="kicker">A message from leadership</div>
@@ -847,7 +873,7 @@
         </div>
       </section>
 
-      <section class="testimonials">
+      <section class="testimonials" data-page="founder">
         <div class="wrap">
           <div class="section-head">
             <div class="kicker">Parent feedback</div>
@@ -874,132 +900,88 @@
         </div>
       </section>
 
-      <section class="notes-section" id="notes">
+      <section class="notes-section" id="notes" data-page="notes">
         <div class="wrap">
           <div class="section-head">
-            <div class="kicker">Student access</div>
+            <div class="kicker">Free study resources</div>
             <h2>Notes for students</h2>
-            <p>Use your assigned user ID and password to access the class notes shared for your section.</p>
+            <p>Browse the available class notes and open or download a copy for revision.</p>
           </div>
 
           <div class="notes-box">
-            <div class="notes-wrap">
-              <div class="notes-login" id="studentLoginBox">
-                <div class="notes-quick">
-                  <span class="chip">📘 Classes 7 to 10</span>
-                  <span class="chip">🧠 Science & Maths</span>
-                  <span class="chip">📚 CBSE chapter list</span>
-                </div>
-                <form id="studentLoginForm">
-                  <div class="row2">
-                    <div>
-                      <label for="studentUserId">Student User ID</label>
-                      <input id="studentUserId" type="text" placeholder="Enter your user ID" required />
-                    </div>
-                    <div>
-                      <label for="studentPassword">Student Password</label>
-                      <input id="studentPassword" type="password" placeholder="Enter your password" required />
-                    </div>
-                  </div>
-                  <button class="btn" type="submit">Open Student Notes</button>
-                </form>
-                <p class="notice">Use the student login to view notes shared for your class.</p>
-                <p class="notes-error" id="studentNotesError"></p>
-              </div>
-
-              <div class="notes-login" id="adminLoginBox">
-                <div class="notes-quick">
-                  <span class="chip">🔐 Admin Access</span>
-                  <span class="chip">📤 Upload Notes & PDFs</span>
-                  <span class="chip">🛡️ Private only</span>
-                </div>
-                <form id="adminLoginForm">
-                  <div class="row2">
-                    <div>
-                      <label for="adminUserId">Admin User ID</label>
-                      <input id="adminUserId" type="text" placeholder="Enter admin user ID" required />
-                    </div>
-                    <div>
-                      <label for="adminPassword">Admin Password</label>
-                      <input id="adminPassword" type="password" placeholder="Enter admin password" required />
-                    </div>
-                  </div>
-                  <button class="btn blue" type="submit">Open Admin Panel</button>
-                </form>
-                <p class="notice">Only the admin can upload notes, PDFs, and chapter files.</p>
-                <p class="notes-error" id="adminNotesError"></p>
-              </div>
+            <div class="resource-tools" role="search" aria-label="Filter study resources">
+              <label for="resourceSearch">Search notes
+                <input id="resourceSearch" type="search" placeholder="Search class, subject, or topic" />
+              </label>
+              <label for="resourceClass">Class
+                <select id="resourceClass">
+                  <option value="all">All classes</option>
+                  <option value="class-7">Class 7</option>
+                  <option value="class-8">Class 8</option>
+                  <option value="class-9">Class 9</option>
+                  <option value="class-10">Class 10</option>
+                </select>
+              </label>
+              <label for="resourceSubject">Subject
+                <select id="resourceSubject">
+                  <option value="all">All subjects</option>
+                  <option value="maths">Maths</option>
+                  <option value="science">Science</option>
+                  <option value="english">English</option>
+                  <option value="computer">Computer</option>
+                </select>
+              </label>
             </div>
 
-            <div class="notes-panel hidden" id="studentNotesPanel">
-              <div class="notes-header">
-                <h3>Student Notes</h3>
-                <button class="btn light" type="button" id="studentLogout">Logout</button>
-              </div>
-
-              <div class="notes-student">
-                <h4>Student Access</h4>
-                <div class="notes-search">
-                  <span aria-hidden="true">🔎</span>
-                  <input id="notesSearch" type="search" placeholder="Search chapter or class..." aria-label="Search notes" />
+            <p class="resource-count" id="resourceCount" aria-live="polite">Showing 4 resources</p>
+            <div class="resource-grid" id="resourceGrid">
+              <article class="resource-card" data-class="class-7" data-subject="maths">
+                <div class="resource-topline"><span class="tag">Class 7</span><span class="tag">Maths</span></div>
+                <h3>Class 7 Maths Notes</h3>
+                <p>Short revision notes for core maths topics.</p>
+                <ul class="resource-topics"><li>Fractions</li><li>Decimals</li><li>Basic geometry</li><li>Revision tips</li></ul>
+                <div class="resource-actions">
+                  <a class="btn light" href="notes/class-7-maths.txt" target="_blank" rel="noopener noreferrer">Preview</a>
+                  <a class="btn blue" href="notes/class-7-maths.txt" download>Download notes</a>
                 </div>
-                <div class="uploaded-note-list" id="uploadedNotesList"></div>
-                <div class="chapter-directory-wrap">
-                  <h4>Class and subject chapters</h4>
-                  <p class="uploaded-note-sub">Choose your class to see chapter numbers and names.</p>
-                  <div class="notes-accordion" id="chapterDirectory"></div>
+              </article>
+              <article class="resource-card" data-class="class-8" data-subject="science">
+                <div class="resource-topline"><span class="tag">Class 8</span><span class="tag">Science</span></div>
+                <h3>Class 8 Science Notes</h3>
+                <p>Quick summaries of selected science topics.</p>
+                <ul class="resource-topics"><li>Crop production</li><li>Force and pressure</li><li>Metals and non-metals</li><li>Revision tips</li></ul>
+                <div class="resource-actions">
+                  <a class="btn light" href="notes/class-8-science.txt" target="_blank" rel="noopener noreferrer">Preview</a>
+                  <a class="btn blue" href="notes/class-8-science.txt" download>Download notes</a>
                 </div>
-              </div>
+              </article>
+              <article class="resource-card" data-class="class-9" data-subject="english">
+                <div class="resource-topline"><span class="tag">Class 9</span><span class="tag">English</span></div>
+                <h3>Class 9 English Notes</h3>
+                <p>Refresh grammar, writing formats, and literature revision.</p>
+                <ul class="resource-topics"><li>Grammar</li><li>Writing skills</li><li>Literature summary</li><li>Revision tips</li></ul>
+                <div class="resource-actions">
+                  <a class="btn light" href="notes/class-9-english.txt" target="_blank" rel="noopener noreferrer">Preview</a>
+                  <a class="btn blue" href="notes/class-9-english.txt" download>Download notes</a>
+                </div>
+              </article>
+              <article class="resource-card" data-class="class-10" data-subject="computer">
+                <div class="resource-topline"><span class="tag">Class 10</span><span class="tag">Computer</span></div>
+                <h3>Class 10 Computer Notes</h3>
+                <p>Review computer fundamentals and common productivity tools.</p>
+                <ul class="resource-topics"><li>Computer basics</li><li>MS Office</li><li>Internet safety</li><li>Revision tips</li></ul>
+                <div class="resource-actions">
+                  <a class="btn light" href="notes/class-10-computer.txt" target="_blank" rel="noopener noreferrer">Preview</a>
+                  <a class="btn blue" href="notes/class-10-computer.txt" download>Download notes</a>
+                </div>
+              </article>
             </div>
-
-            <div class="notes-panel hidden" id="adminNotesPanel">
-              <div class="notes-header">
-                <h3>Admin Upload Panel</h3>
-                <button class="btn light" type="button" id="adminLogout">Logout</button>
-              </div>
-
-              <div class="notes-admin">
-                <div class="notes-upload-head">
-                  <h4>Admin Upload</h4>
-                  <span class="status ready">Live</span>
-                </div>
-                <form id="notesUploadForm">
-                  <div class="notes-upload-grid">
-                    <div>
-                      <label for="uploadClass">Class</label>
-                      <select id="uploadClass">
-                        <option>Class 7</option>
-                        <option>Class 8</option>
-                        <option>Class 9</option>
-                        <option selected>Class 10</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label for="uploadSubject">Subject</label>
-                      <select id="uploadSubject">
-                        <option selected>Science</option>
-                        <option>Maths</option>
-                      </select>
-                    </div>
-                    <div class="full">
-                      <label for="uploadTitle">Chapter / Topic</label>
-                      <input id="uploadTitle" type="text" placeholder="e.g. Light Reflection and Refraction" required />
-                    </div>
-                    <div class="full">
-                      <label for="uploadFile">Select PDF or note file</label>
-                      <input id="uploadFile" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
-                    </div>
-                  </div>
-                  <button class="btn" type="submit">Upload Note</button>
-                  <div class="notes-upload-status" id="notesUploadStatus"></div>
-                </form>
-              </div>
-            </div>
+            <p class="resource-empty" id="resourceEmpty" hidden>No notes match those filters. Try another class, subject, or search.</p>
           </div>
         </div>
       </section>
 
-      <div class="cta">
+      <div class="cta" data-page="contact">
         <div class="wrap cta-in">
           <div>
             <h2>Ready to take the next step?</h2>
@@ -1009,7 +991,7 @@
         </div>
       </div>
 
-      <section class="contact" id="contact">
+      <section class="contact" id="contact" data-page="contact">
         <div class="wrap">
           <div class="section-head">
             <div class="kicker">Get in touch</div>
@@ -1072,7 +1054,7 @@
       <div class="wrap">
         <div class="footgrid">
           <div>
-            <a class="brand" href="#home" style="color:white;">
+            <a class="brand" href="?page=home" style="color:white;">
               <span class="logo">
                 <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M16 10v17"/>
@@ -1090,18 +1072,18 @@
 
           <div>
             <h4>Explore</h4>
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#courses">Courses</a>
-            <a href="#founder">Founder</a>
+            <a href="?page=home">Home</a>
+            <a href="?page=about">About Us</a>
+            <a href="?page=courses">Courses</a>
+            <a href="?page=founder">Founder</a>
           </div>
 
           <div>
             <h4>Popular Courses</h4>
-            <a href="#courses">Basic Computer</a>
-            <a href="#courses">MS Office & Excel</a>
-            <a href="#courses">Web Designing</a>
-            <a href="#courses">Digital Marketing</a>
+            <a href="?page=courses">Basic Computer</a>
+            <a href="?page=courses">MS Office & Excel</a>
+            <a href="?page=courses">Web Designing</a>
+            <a href="?page=courses">Digital Marketing</a>
           </div>
 
           <div>
@@ -1118,222 +1100,58 @@
     <a class="whatsapp" href="https://wa.me/918076335897?text=Hi%20Sharma%20Classes%2C%20I%20want%20to%20know%20more%20about%20your%20courses%20and%20fees." target="_blank" rel="noopener noreferrer" aria-label="Contact Sharma Classes on WhatsApp">✆ WhatsApp</a>
 
     <script>
-      const STUDENT_USERS = { sharma7: 'anishbhaiya' };
-      const ADMIN_USERS = { sharmaadmin: 'admin123' };
+      const pageTitles = {
+        home: 'Home',
+        about: 'About',
+        courses: 'Courses',
+        why: 'Why Us',
+        founder: 'Founder',
+        notes: 'Student Notes',
+        contact: 'Contact'
+      };
+      const requestedPage = new URLSearchParams(window.location.search).get('page') || 'home';
+      const activePage = Object.hasOwn(pageTitles, requestedPage) ? requestedPage : 'home';
 
-      const studentLoginBox = document.getElementById('studentLoginBox');
-      const adminLoginBox = document.getElementById('adminLoginBox');
-      const studentNotesPanel = document.getElementById('studentNotesPanel');
-      const adminNotesPanel = document.getElementById('adminNotesPanel');
-      const studentLoginForm = document.getElementById('studentLoginForm');
-      const adminLoginForm = document.getElementById('adminLoginForm');
-      const studentNotesError = document.getElementById('studentNotesError');
-      const adminNotesError = document.getElementById('adminNotesError');
-      const notesSearch = document.getElementById('notesSearch');
-      const notesUploadForm = document.getElementById('notesUploadForm');
-      const notesUploadStatus = document.getElementById('notesUploadStatus');
-      const uploadedNotesList = document.getElementById('uploadedNotesList');
-      const chapterDirectory = document.getElementById('chapterDirectory');
-      let isAdminAuthenticated = false;
+      document.querySelectorAll('main [data-page]').forEach((page) => {
+        page.hidden = page.dataset.page !== activePage;
+      });
+      document.title = `${pageTitles[activePage]} | Sharma Classes`;
 
-      const chapterGroups = [
-        { className: 'Class 7', subject: 'Science', chapters: ['Nutrition in Plants', 'Nutrition in Animals', 'Fibre to Fabric', 'Heat', 'Acids, Bases and Salts', 'Physical and Chemical Changes', 'Weather, Climate and Adaptations', 'Winds, Storms and Cyclones', 'Soil', 'Respiration in Organisms', 'Transportation in Animals and Plants', 'Reproduction in Plants', 'Motion and Time', 'Electric Current and Its Effects', 'Light', 'Forests: Our Lifeline', 'Water: A Precious Resource', 'Wastewater Story'] },
-        { className: 'Class 7', subject: 'Maths', chapters: ['Integers', 'Fractions and Decimals', 'Data Handling', 'Simple Equations', 'Lines and Angles', 'The Triangle and Its Properties', 'Comparing Quantities', 'Rational Numbers', 'Practical Geometry', 'Perimeter and Area', 'Algebraic Expressions', 'Exponents and Powers', 'Symmetry', 'Visualising Solid Shapes'] },
-        { className: 'Class 8', subject: 'Science', chapters: ['Crop Production and Management', 'Microorganisms: Friend and Foe', 'Coal and Petroleum', 'Combustion and Flame', 'Conservation of Plants and Animals', 'Cell: Structure and Functions', 'Reproduction in Animals', 'Reaching the Age of Adolescence', 'Force and Pressure', 'Friction', 'Sound', 'Chemical Effects of Electric Current', 'Some Natural Phenomena', 'Light', 'Stars and the Solar System', 'Pollution of Air and Water'] },
-        { className: 'Class 8', subject: 'Maths', chapters: ['Rational Numbers', 'Linear Equations in One Variable', 'Understanding Quadrilaterals', 'Data Handling', 'Squares and Square Roots', 'Cubes and Cube Roots', 'Comparing Quantities', 'Algebraic Expressions and Identities', 'Mensuration', 'Exponents and Powers', 'Direct and Inverse Proportions', 'Factorisation', 'Introduction to Graphs', 'Playing with Numbers'] },
-        { className: 'Class 9', subject: 'Science', chapters: ['Matter in Our Surroundings', 'Is Matter Around Us Pure?', 'Atoms and Molecules', 'Structure of the Atom', 'The Fundamental Unit of Life', 'Tissues', 'Diversity in Living Organisms', 'Motion', 'Forces and Laws of Motion', 'Gravitation', 'Work and Energy', 'Sound', 'Why Do We Fall Ill?', 'Natural Resources', 'Improvement in Food Resources'] },
-        { className: 'Class 9', subject: 'Maths', chapters: ['Number Systems', 'Polynomials', 'Coordinate Geometry', 'Linear Equations in Two Variables', 'Introduction to Euclid’s Geometry', 'Lines and Angles', 'Triangles', 'Quadrilaterals', 'Areas of Parallelograms and Triangles', 'Circles', 'Constructions', 'Heron’s Formula', 'Surface Areas and Volumes', 'Statistics', 'Probability'] },
-        { className: 'Class 10', subject: 'Science', chapters: ['Chemical Reactions and Equations', 'Acids, Bases and Salts', 'Metals and Non-metals', 'Carbon and Its Compounds', 'Periodic Classification of Elements', 'Life Processes', 'Control and Coordination', 'How do Organisms Reproduce?', 'Heredity and Evolution', 'Light – Reflection and Refraction', 'The Human Eye and the Colourful World', 'Electricity', 'Magnetic Effects of Electric Current', 'Sources of Energy', 'Our Environment', 'Sustainable Management of Natural Resources'] },
-        { className: 'Class 10', subject: 'Maths', chapters: ['Real Numbers', 'Polynomials', 'Pair of Linear Equations in Two Variables', 'Quadratic Equations', 'Arithmetic Progressions', 'Triangles', 'Coordinate Geometry', 'Introduction to Trigonometry', 'Some Applications of Trigonometry', 'Circles', 'Areas Related to Circles', 'Surface Areas and Volumes', 'Statistics', 'Probability'] }
-      ];
-
-      function getStoredNotes() {
-        try {
-          return JSON.parse(localStorage.getItem('sharmaClassesNotes') || '[]');
-        } catch (error) {
-          return [];
-        }
-      }
-
-      function saveStoredNotes(notes) {
-        localStorage.setItem('sharmaClassesNotes', JSON.stringify(notes));
-      }
-
-      function renderChapterDirectory() {
-        if (!chapterDirectory) return;
-
-        chapterDirectory.innerHTML = chapterGroups.map((group, groupIndex) => `
-          <details ${groupIndex === 0 ? 'open' : ''}>
-            <summary><span>${group.className} • ${group.subject}</span><span>${group.chapters.length} chapters</span></summary>
-            <div class="note-box">
-              <ol class="chapter-list numbered">
-                ${group.chapters.map((chapter) => `<li>${chapter}</li>`).join('')}
-              </ol>
-            </div>
-          </details>
-        `).join('');
-      }
-
-      function renderUploadedNotes() {
-        const notes = getStoredNotes();
-        if (!uploadedNotesList) return;
-
-        if (!notes.length) {
-          uploadedNotesList.innerHTML = '<div class="uploaded-note-item"><div class="uploaded-note-meta"><span class="uploaded-note-title">No uploaded notes yet</span><span class="uploaded-note-sub">Your uploaded chapters will appear here.</span></div><span class="status coming">Waiting</span></div>';
-          return;
-        }
-
-        uploadedNotesList.innerHTML = notes.map((note) => {
-          const fileLabel = note.fileName ? note.fileName : 'No file uploaded';
-          const downloadHtml = note.fileData ? `<a class="download-link" href="${note.fileData}" download="${note.fileName || note.title}">Download</a>` : '<span class="status coming">No file</span>';
-          return `
-            <div class="uploaded-note-item">
-              <div class="uploaded-note-meta">
-                <span class="uploaded-note-title">${note.title}</span>
-                <span class="uploaded-note-sub">${note.className} • ${note.subject} • ${fileLabel}</span>
-              </div>
-              <div class="uploaded-note-actions">
-                <span class="status ready">Added</span>
-                ${downloadHtml}
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
-
-      function showStudentPanel() {
-        studentLoginBox.classList.add('hidden');
-        adminLoginBox.classList.add('hidden');
-        studentNotesPanel.classList.remove('hidden');
-        adminNotesPanel.classList.add('hidden');
-        renderUploadedNotes();
-      }
-
-      function showAdminPanel() {
-        studentLoginBox.classList.add('hidden');
-        adminLoginBox.classList.add('hidden');
-        studentNotesPanel.classList.add('hidden');
-        adminNotesPanel.classList.remove('hidden');
-      }
-
-      function hideStudentPanel() {
-        studentNotesPanel.classList.add('hidden');
-        studentLoginBox.classList.remove('hidden');
-        adminLoginBox.classList.remove('hidden');
-        studentLoginForm.reset();
-        studentNotesError.textContent = '';
-      }
-
-      function hideAdminPanel() {
-        isAdminAuthenticated = false;
-        adminNotesPanel.classList.add('hidden');
-        studentLoginBox.classList.remove('hidden');
-        adminLoginBox.classList.remove('hidden');
-        adminLoginForm.reset();
-        adminNotesError.textContent = '';
-      }
-
-      studentLoginForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const userId = document.getElementById('studentUserId').value.trim();
-        const password = document.getElementById('studentPassword').value.trim();
-        if (STUDENT_USERS[userId] && STUDENT_USERS[userId] === password) {
-          showStudentPanel();
-        } else {
-          studentNotesError.textContent = 'Incorrect student User ID or Password.';
+      document.querySelectorAll('.links a').forEach((link) => {
+        if (new URL(link.href).searchParams.get('page') === activePage) {
+          link.setAttribute('aria-current', 'page');
         }
       });
 
-      adminLoginForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const userId = document.getElementById('adminUserId').value.trim();
-        const password = document.getElementById('adminPassword').value.trim();
-        if (ADMIN_USERS[userId] && ADMIN_USERS[userId] === password) {
-          isAdminAuthenticated = true;
-          showAdminPanel();
-        } else {
-          adminNotesError.textContent = 'Incorrect admin User ID or Password.';
-        }
-      });
+      const resourceSearch = document.getElementById('resourceSearch');
+      const resourceClass = document.getElementById('resourceClass');
+      const resourceSubject = document.getElementById('resourceSubject');
+      const resourceCards = [...document.querySelectorAll('.resource-card')];
+      const resourceCount = document.getElementById('resourceCount');
+      const resourceEmpty = document.getElementById('resourceEmpty');
 
-      notesUploadForm?.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!isAdminAuthenticated) {
-          notesUploadStatus.textContent = 'Please sign in with the admin account before uploading.';
-          notesUploadStatus.style.color = '#c03737';
-          return;
-        }
+      function filterResources() {
+        const query = resourceSearch.value.trim().toLowerCase();
+        const selectedClass = resourceClass.value;
+        const selectedSubject = resourceSubject.value;
+        let visibleCount = 0;
 
-        const title = document.getElementById('uploadTitle').value.trim();
-        const className = document.getElementById('uploadClass').value;
-        const subject = document.getElementById('uploadSubject').value;
-        const fileInput = document.getElementById('uploadFile');
-        const file = fileInput && fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
-        const fileName = file ? file.name : 'No file selected';
-
-        if (!title) {
-          notesUploadStatus.textContent = 'Please enter a chapter or topic name.';
-          notesUploadStatus.style.color = '#c03737';
-          return;
-        }
-
-        const notes = getStoredNotes();
-        const newNote = { title, className, subject, fileName, addedAt: new Date().toISOString() };
-
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function () {
-            newNote.fileData = reader.result;
-            notes.unshift(newNote);
-            saveStoredNotes(notes);
-            renderUploadedNotes();
-            notesUploadStatus.textContent = 'Note uploaded successfully.';
-            notesUploadStatus.style.color = '#1b9c67';
-            notesUploadForm.reset();
-          };
-          reader.readAsDataURL(file);
-        } else {
-          notes.unshift(newNote);
-          saveStoredNotes(notes);
-          renderUploadedNotes();
-          notesUploadStatus.textContent = 'Note saved successfully.';
-          notesUploadStatus.style.color = '#1b9c67';
-          notesUploadForm.reset();
-        }
-      });
-
-      document.getElementById('studentLogout').addEventListener('click', hideStudentPanel);
-      document.getElementById('adminLogout').addEventListener('click', hideAdminPanel);
-
-      renderUploadedNotes();
-      renderChapterDirectory();
-
-      function filterNotes() {
-        const q = (notesSearch?.value || '').toLowerCase().trim();
-        const noteItems = uploadedNotesList ? uploadedNotesList.querySelectorAll('.uploaded-note-item') : [];
-        noteItems.forEach((item) => {
-          const text = item.innerText.toLowerCase();
-          item.style.display = q && !text.includes(q) ? 'none' : '';
+        resourceCards.forEach((card) => {
+          const matchesQuery = card.textContent.toLowerCase().includes(query);
+          const matchesClass = selectedClass === 'all' || card.dataset.class === selectedClass;
+          const matchesSubject = selectedSubject === 'all' || card.dataset.subject === selectedSubject;
+          const isVisible = matchesQuery && matchesClass && matchesSubject;
+          card.hidden = !isVisible;
+          if (isVisible) visibleCount += 1;
         });
 
-        chapterDirectory?.querySelectorAll('details').forEach((group) => {
-          const summary = group.querySelector('summary');
-          const chapterItems = group.querySelectorAll('li');
-          const groupMatches = !q || summary.textContent.toLowerCase().includes(q);
-          let hasVisibleChapter = false;
-
-          chapterItems.forEach((item) => {
-            const matches = groupMatches || item.textContent.toLowerCase().includes(q);
-            item.style.display = matches ? '' : 'none';
-            hasVisibleChapter = hasVisibleChapter || matches;
-          });
-
-          group.style.display = hasVisibleChapter ? '' : 'none';
-          if (q && hasVisibleChapter) group.open = true;
-        });
+        resourceCount.textContent = `Showing ${visibleCount} of ${resourceCards.length} resources`;
+        resourceEmpty.hidden = visibleCount > 0;
       }
 
-      notesSearch?.addEventListener('input', filterNotes);
+      resourceSearch.addEventListener('input', filterResources);
+      resourceClass.addEventListener('change', filterResources);
+      resourceSubject.addEventListener('change', filterResources);
 
       const search = document.getElementById('courseSearch');
       const category = document.getElementById('courseCategory');
@@ -1350,9 +1168,19 @@
       search.addEventListener('input', filterCourses);
       category.addEventListener('change', filterCourses);
 
-      document.querySelectorAll('[data-course]').forEach((a) => {
-        a.addEventListener('click', () => {
-          document.getElementById('course').value = a.dataset.course;
+      const requestedCourse = new URLSearchParams(window.location.search).get('course');
+      const courseSelect = document.getElementById('course');
+      if (requestedCourse && [...courseSelect.options].some((option) => option.value === requestedCourse || option.textContent === requestedCourse)) {
+        courseSelect.value = requestedCourse;
+      }
+
+      document.querySelectorAll('[data-course]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const destination = new URL(link.href);
+          destination.searchParams.set('page', 'contact');
+          destination.searchParams.set('course', link.dataset.course);
+          window.location.href = destination;
         });
       });
 
