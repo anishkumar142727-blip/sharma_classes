@@ -1,0 +1,31 @@
+SHARMA CLASSES - CLASS 10 MATHS REVISION NOTES
+
+Pair of Linear Equations
+- A solution is an ordered pair that satisfies both equations.
+- Substitution and elimination are useful algebraic methods for finding a solution.
+- Graphically, the solution is the intersection of the two lines when one unique solution exists.
+
+Quadratic Equations
+- Standard form: ax^2 + bx + c = 0, where a is not zero.
+- The quadratic formula is x = (-b +/- sqrt(b^2 - 4ac)) / (2a).
+- The discriminant D = b^2 - 4ac indicates the type of roots: positive gives two distinct real roots, zero gives equal real roots, and negative gives no real roots.
+
+Arithmetic Progressions
+- An arithmetic progression has a constant common difference d.
+- The nth term is a_n = a + (n - 1)d.
+- The sum of the first n terms is S_n = n/2 [2a + (n - 1)d].
+
+Trigonometry
+- For an acute angle in a right triangle: sin(theta) = opposite/hypotenuse, cos(theta) = adjacent/hypotenuse, tan(theta) = opposite/adjacent.
+- Identity: sin^2(theta) + cos^2(theta) = 1.
+- Draw a right triangle and label the sides before selecting a ratio.
+
+Statistics and Probability
+- Mean = sum of observations / number of observations.
+- Probability of an event = favourable outcomes / total equally likely outcomes.
+- Probability is between 0 and 1 inclusive.
+
+Revision Check
+- Write the formula before substituting values and show each algebra step.
+- Keep exact values until the final step unless rounding is requested.
+- Check the current school syllabus because chapter coverage can vary.

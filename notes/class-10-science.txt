@@ -1,0 +1,31 @@
+SHARMA CLASSES - CLASS 10 SCIENCE REVISION NOTES
+
+Chemical Reactions
+- A chemical equation represents reactants changing into products.
+- Balance an equation by changing coefficients, not the chemical formula subscripts.
+- Common reaction types include combination, decomposition, displacement, and double displacement.
+
+Acids, Bases, and Salts
+- Acids produce hydrogen ions in aqueous solution; bases produce hydroxide ions.
+- The pH scale indicates acidity or basicity: values below 7 are acidic, 7 is neutral, and above 7 is basic.
+- Always follow classroom safety instructions when handling laboratory chemicals.
+
+Life Processes
+- Nutrition, respiration, transport, and excretion are essential life processes.
+- In humans, digestion breaks food into simpler substances that can be absorbed.
+- Respiration releases energy from food; breathing and cellular respiration are related but different processes.
+
+Light
+- The mirror formula is 1/f = 1/v + 1/u, using the sign convention taught in class.
+- Magnification for a mirror is m = -v/u.
+- Draw a ray diagram to check the position and nature of an image.
+
+Electricity and Magnetism
+- Ohm's law: V = IR, where V is potential difference, I is current, and R is resistance.
+- In a series circuit, current is the same through each component; in a parallel circuit, potential difference is the same across branches.
+- An electric current produces a magnetic field around its conductor.
+
+Revision Check
+- Balance equations and include units in numerical answers.
+- Use the sign convention provided in the question or class notes.
+- Check the current school syllabus because chapter coverage can vary.

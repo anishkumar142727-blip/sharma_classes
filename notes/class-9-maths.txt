@@ -1,0 +1,33 @@
+SHARMA CLASSES - CLASS 9 MATHS REVISION NOTES
+
+Number Systems
+- Rational numbers can be written as p/q, where p and q are integers and q is not zero.
+- A rational number has a terminating or repeating decimal expansion.
+- Irrational numbers have non-terminating, non-repeating decimal expansions.
+- Real numbers include both rational and irrational numbers.
+
+Polynomials
+- A polynomial in one variable is an algebraic expression with non-negative integer powers of the variable.
+- The highest power with a non-zero coefficient is its degree.
+- A zero of a polynomial is a value that makes the polynomial equal to zero.
+- Useful identities: (a + b)^2 = a^2 + 2ab + b^2; (a - b)^2 = a^2 - 2ab + b^2; a^2 - b^2 = (a - b)(a + b).
+
+Linear Equations in Two Variables
+- An equation ax + by + c = 0 has ordered-pair solutions (x, y).
+- Each solution is a point on the graph of the equation.
+- The graph of a linear equation in two variables is a straight line.
+
+Coordinate Geometry
+- The horizontal axis is the x-axis and the vertical axis is the y-axis.
+- Their intersection is the origin (0, 0).
+- A point is written as (x, y); x is the abscissa and y is the ordinate.
+
+Triangles
+- The interior angles of a triangle add up to 180 degrees.
+- Congruent triangles have the same shape and size; check a valid congruence rule before matching sides.
+- In an isosceles triangle, the angles opposite the equal sides are equal.
+
+Revision Check
+- Show working clearly and include units where needed.
+- Draw and label graphs or geometry diagrams carefully.
+- Check the current school syllabus because chapter coverage can vary.

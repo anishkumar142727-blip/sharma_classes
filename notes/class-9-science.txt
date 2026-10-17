@@ -1,0 +1,31 @@
+SHARMA CLASSES - CLASS 9 SCIENCE REVISION NOTES
+
+Matter Around Us
+- Matter is made of particles that have spaces between them and are in continuous motion.
+- Diffusion is the movement of particles from a region of higher concentration to lower concentration.
+- Evaporation causes cooling; it increases with surface area, temperature, and wind speed.
+
+Atoms and Molecules
+- An atom is the smallest unit of an element that takes part in a chemical reaction.
+- A molecule contains two or more atoms chemically bonded together.
+- Use valency to write a chemical formula, then check that the total positive and negative charges balance.
+
+Cells and Tissues
+- The cell membrane controls movement of substances into and out of the cell.
+- The nucleus contains genetic material and helps control cell activities.
+- A tissue is a group of similar cells that work together to perform a function.
+
+Motion
+- Speed = distance / time.
+- Velocity includes direction; acceleration is the change in velocity per unit time.
+- For uniform acceleration: v = u + at and s = ut + (1/2)at^2.
+
+Force, Work, and Sound
+- Force can change an object's motion or shape; the SI unit of force is the newton (N).
+- Work is done when a force causes displacement in its direction: W = F x s.
+- Sound is produced by vibrations and needs a medium to travel.
+
+Revision Check
+- Write the known quantities before choosing a formula.
+- Include units in numerical answers and label diagrams.
+- Check the current school syllabus because chapter coverage can vary.
