@@ -367,6 +367,31 @@
       .resource-topics li { padding: 5px 9px; border-radius: 999px; background: var(--blue-soft); color: var(--navy); font-size: 0.78rem; font-weight: 700; }
       .resource-actions { display: flex; flex-wrap: wrap; gap: 10px; }
       .resource-actions .btn { padding: 10px 14px; border-radius: 10px; font-size: 0.88rem; }
+      .chapter-card {
+        display: grid;
+        grid-template-columns: 68px minmax(0, 1fr);
+        gap: 14px;
+        align-items: center;
+      }
+      .chapter-number {
+        width: 68px;
+        height: 68px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--blue), var(--navy));
+        color: white;
+        font-size: 0.72rem;
+        font-weight: 900;
+        box-shadow: 0 10px 20px rgba(26,95,193,0.16);
+      }
+      .chapter-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.02rem;
+      }
+      .chapter-card .resource-actions {
+        gap: 8px;
+      }
       .resource-empty { margin: 0; padding: 20px; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); text-align: center; }
       .notes-wrap {
         display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 24px; align-items: start;
@@ -929,7 +954,7 @@
               </label>
             </div>
 
-            <p class="resource-count" id="resourceCount" aria-live="polite">Showing 4 resources</p>
+            <p class="resource-count" id="resourceCount" aria-live="polite">Showing 18 resources</p>
             <div class="resource-grid" id="resourceGrid">
               <article class="resource-card" data-class="class-9" data-subject="maths">
                 <div class="resource-topline"><span class="tag">Class 9</span><span class="tag">Maths</span></div>
@@ -951,16 +976,6 @@
                   <a class="btn blue" href="notes/class-9-science.txt" download>Download notes</a>
                 </div>
               </article>
-              <article class="resource-card" data-class="class-10" data-subject="maths">
-                <div class="resource-topline"><span class="tag">Class 10</span><span class="tag">Maths</span></div>
-                <h3>Class 10 Maths Notes</h3>
-                <p>Key formulas and reminders for algebra, progressions, trigonometry, and statistics.</p>
-                <ul class="resource-topics"><li>Quadratics</li><li>Arithmetic progressions</li><li>Trigonometry</li><li>Statistics</li></ul>
-                <div class="resource-actions">
-                  <a class="btn light" href="notes/class-10-maths.txt" target="_blank" rel="noopener noreferrer">Preview</a>
-                  <a class="btn blue" href="notes/class-10-maths.txt" download>Download notes</a>
-                </div>
-              </article>
               <article class="resource-card" data-class="class-10" data-subject="science">
                 <div class="resource-topline"><span class="tag">Class 10</span><span class="tag">Science</span></div>
                 <h3>Class 10 Science Notes</h3>
@@ -969,6 +984,156 @@
                 <div class="resource-actions">
                   <a class="btn light" href="notes/class-10-science.txt" target="_blank" rel="noopener noreferrer">Preview</a>
                   <a class="btn blue" href="notes/class-10-science.txt" download>Download notes</a>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 01</div>
+                <div>
+                  <h3>Real Numbers</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/11-Real-Numbers.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/11-Real-Numbers.pdf" download="Class-10-Maths-Chapter-1-Real-Numbers.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 02</div>
+                <div>
+                  <h3>Polynomials</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/02-Polynomials.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/02-Polynomials.pdf" download="Class-10-Maths-Polynomials.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 03</div>
+                <div>
+                  <h3>Pair of Linear Equations in Two Variables</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/01-Pair-of-Linear-Equations-in-Two-Variables.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/01-Pair-of-Linear-Equations-in-Two-Variables.pdf" download="Class-10-Maths-Pair-of-Linear-Equations-in-Two-Variables.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 04</div>
+                <div>
+                  <h3>Quadratic Equations</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/02-Quadratic-Equations.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/02-Quadratic-Equations.pdf" download="Class-10-Maths-Quadratic-Equations.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 05</div>
+                <div>
+                  <h3>Arithmetic Progressions</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/03-Arithmetic-Progressions.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/03-Arithmetic-Progressions.pdf" download="Class-10-Maths-Arithmetic-Progressions.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 06</div>
+                <div>
+                  <h3>Triangles</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/04-Triangles.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/04-Triangles.pdf" download="Class-10-Maths-Triangles.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 07</div>
+                <div>
+                  <h3>Coordinate Geometry</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/05-Coordinate-Geometry.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/05-Coordinate-Geometry.pdf" download="Class-10-Maths-Coordinate-Geometry.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 08</div>
+                <div>
+                  <h3>Introduction to Trigonometry</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/06-Introduction-to-Trigonometry.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/06-Introduction-to-Trigonometry.pdf" download="Class-10-Maths-Introduction-to-Trigonometry.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 09</div>
+                <div>
+                  <h3>Some Applications of Trigonometry</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/07-Some-Applications-of-Trigonometry.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/07-Some-Applications-of-Trigonometry.pdf" download="Class-10-Maths-Some-Applications-of-Trigonometry.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 10</div>
+                <div>
+                  <h3>Circles</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/10-Circles.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/10-Circles.pdf" download="Class-10-Maths-Circles.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 11</div>
+                <div>
+                  <h3>Constructions</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/11-Constructions.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/11-Constructions.pdf" download="Class-10-Maths-Constructions.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 12</div>
+                <div>
+                  <h3>Areas Related to Circles</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/12-Areas-Related-to-Circles.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/12-Areas-Related-to-Circles.pdf" download="Class-10-Maths-Areas-Related-to-Circles.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 13</div>
+                <div>
+                  <h3>Surface Areas and Volumes</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/08-Surface-Areas-and-Volumes.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/08-Surface-Areas-and-Volumes.pdf" download="Class-10-Maths-Surface-Areas-and-Volumes.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 14</div>
+                <div>
+                  <h3>Statistics</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/09-Statistics.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/09-Statistics.pdf" download="Class-10-Maths-Statistics.pdf">Download PDF</a>
+                  </div>
+                </div>
+              </article>
+              <article class="resource-card chapter-card" data-class="class-10" data-subject="maths">
+                <div class="chapter-number">PDF 15</div>
+                <div>
+                  <h3>Probability</h3>
+                  <div class="resource-actions">
+                    <a class="btn light" href="notes/class-10-maths/10-Probability.pdf" target="_blank" rel="noopener noreferrer">Preview PDF</a>
+                    <a class="btn blue" href="notes/class-10-maths/10-Probability.pdf" download="Class-10-Maths-Probability.pdf">Download PDF</a>
+                  </div>
                 </div>
               </article>
             </div>
